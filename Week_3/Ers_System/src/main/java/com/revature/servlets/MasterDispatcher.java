@@ -15,7 +15,6 @@ public class MasterDispatcher {
 		switch(request.getRequestURI()) {
 		
 		case "/Ers_System/login.do":
-				System.out.println("inside masterdispatcher " + request.getRequestURI());
 				return LoginService.login(request, response);
 		case "/Ers_System/home.do":
 				return LoginService.login(request, response);

@@ -13,14 +13,18 @@ public class ConnectionUtil {
 	private static Connection conn;
 	
 	private ConnectionUtil() {
-		
+		// /Ers_System/src/main/resources/db.properties
 	}
 	public static Connection getConnection() {
+		System.out.println("inside getConnection");
 			Properties props =  new Properties();
-			try(InputStream in = new FileInputStream("src/main/resources/db.properties")) {
+			try(InputStream in = new FileInputStream("C:\\Users\\abj\\Documents\\STS-Projects\\Ers_System\\src\\main\\resources\\db.properties")) {
 				props.load(in);
+				Class.forName("oracle.jdbc.driver.OracleDriver");
 				return DriverManager.getConnection(props.getProperty("jdbc.url"), props.getProperty("jdbc.username"), props.getProperty("jdbc.password"));
 						
+			} catch (ClassNotFoundException cnfe) {
+				cnfe.printStackTrace();
 			} catch(FileNotFoundException fnfe) {
 				fnfe.printStackTrace();
 			} catch (IOException ioe) {

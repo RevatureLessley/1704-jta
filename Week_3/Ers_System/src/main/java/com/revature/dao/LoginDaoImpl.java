@@ -26,7 +26,7 @@ public class LoginDaoImpl implements LoginDao{
 	}
 	
 
-	public Employee getUser(String username) {
+	public Employee getUser(String username) {		
 		
 		System.out.println("inside getUser");
 		int index = 0;
