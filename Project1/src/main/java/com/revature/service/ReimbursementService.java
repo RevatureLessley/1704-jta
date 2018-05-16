@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.concurrent.TimeUnit;
 
 import javax.servlet.ServletException;
@@ -33,9 +35,10 @@ public class ReimbursementService {
 		InputStream fileContent = filePart.getInputStream();
 		byte[] buffer = new byte[fileContent.available()];
 	    fileContent.read(buffer);
-	 
+	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss");
+	    fileName=id+"-"+LocalDateTime.now().format(formatter)+fileName.substring(fileName.indexOf("."));
+	    System.out.println(fileName);
 	    File targetFile = new File("C:\\Users\\Daniel\\Documents\\workspace-sts-3.9.3.RELEASE\\Project1\\src\\main\\webapp\\images\\"+fileName);
-	    
 	    OutputStream outStream = new FileOutputStream(targetFile);
 	    outStream.write(buffer);
 	    outStream.close();
