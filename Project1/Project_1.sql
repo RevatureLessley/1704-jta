@@ -1,4 +1,4 @@
---CREATE USER project_1 IDENTIFIED BY reimburse;
+--CREATE USER project1 IDENTIFIED BY password;
 --
 --GRANT CONNECT TO project_1;
 --GRANT CREATE ANY TABLE TO project_1;
