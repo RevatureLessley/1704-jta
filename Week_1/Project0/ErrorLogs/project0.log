@@ -34525,3 +34525,4 @@ ORA-06512: at line 1
 2018-05-14 23:20:47 WARN  LogHere:27 - Invalid column index
 2018-05-14 23:20:47 WARN  LogHere:27 - SQLE State: 99999
 2018-05-14 23:20:47 WARN  LogHere:27 - Error code: 17003
+2018-05-16 05:53:12 WARN  LogHere:27 - 
