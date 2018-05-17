@@ -20063,3 +20063,7 @@ PL/SQL: Statement ignored
 2018-05-16 21:00:45 INFO  LogThis:25 - MasterServlet doGet
 2018-05-16 21:00:45 INFO  LogThis:25 - MasterDispatcher process
 2018-05-16 21:00:45 INFO  LogThis:25 - MasterDispatcher 404.do
+2018-05-16 21:07:53 INFO  LogThis:25 - CORSFilter HTTP Request: GET
+2018-05-16 21:07:53 INFO  LogThis:25 - CORSFilter HTTP URI: /EmployeeReimbursementSystem/
+2018-05-16 21:07:53 INFO  LogThis:25 - CORSFilter HTTP URL: http://localhost:8080/EmployeeReimbursementSystem/
+2018-05-16 21:07:53 INFO  LogThis:25 - CORSFilter HTTP Protocol: HTTP/1.1
