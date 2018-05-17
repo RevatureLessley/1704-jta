@@ -38,9 +38,6 @@ public class NavigationService {
 		}
 	}
 
-	public static String fnf(HttpServletRequest request) {
-		return "404.do";
-	}
 
 	public static String logout(HttpServletRequest request, HttpServletResponse response) {
 		try { 

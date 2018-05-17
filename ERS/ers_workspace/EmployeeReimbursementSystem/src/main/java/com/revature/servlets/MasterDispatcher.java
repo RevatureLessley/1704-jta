@@ -44,8 +44,13 @@ public class MasterDispatcher {
 			return NavigationService.logout(request, response);
 
 		case "/EmployeeReimbursementSystem/finManHome.do":
-			if (request.getSession().getAttribute("currentEmployee") == null) {
-				LogThis.info("MasterDispatcher if currentEmployee == null");
+			try {
+				if (request.getSession().getAttribute("currentEmployee") == null) {
+
+					LogThis.info("MasterDispatcher if currentEmployee == null");
+					return "main.do";
+				}
+			} catch (Exception e) {
 				return "main.do";
 			}
 
@@ -53,8 +58,13 @@ public class MasterDispatcher {
 			return FinancialManagerService.finManHome(request);
 
 		case "/EmployeeReimbursementSystem/employeeHome.do":
-			if (request.getSession().getAttribute("currentEmployee") == null) {
-				LogThis.info("MasterDispatcher if currentEmployee == null");
+			try {
+				if (request.getSession().getAttribute("currentEmployee") == null) {
+
+					LogThis.info("MasterDispatcher if currentEmployee == null");
+					return "main.do";
+				}
+			} catch (Exception e) {
 				return "main.do";
 			}
 
@@ -62,8 +72,13 @@ public class MasterDispatcher {
 			return EmployeeService.employeeHome(request);
 
 		case "/EmployeeReimbursementSystem/update.do":
-			if (request.getSession().getAttribute("currentEmployee") == null) {
-				LogThis.info("MasterDispatcher if currentEmployee == null");
+			try {
+				if (request.getSession().getAttribute("currentEmployee") == null) {
+
+					LogThis.info("MasterDispatcher if currentEmployee == null");
+					return "main.do";
+				}
+			} catch (Exception e) {
 				return "main.do";
 			}
 
@@ -71,8 +86,13 @@ public class MasterDispatcher {
 			return NavigationService.userUpdate(request);
 
 		case "/EmployeeReimbursementSystem/submitReimb.do":
-			if (request.getSession().getAttribute("currentEmployee") == null) {
-				LogThis.info("MasterDispatcher if currentEmployee == null");
+			try {
+				if (request.getSession().getAttribute("currentEmployee") == null) {
+
+					LogThis.info("MasterDispatcher if currentEmployee == null");
+					return "main.do";
+				}
+			} catch (Exception e) {
 				return "main.do";
 			}
 
@@ -80,8 +100,13 @@ public class MasterDispatcher {
 			return ReimbursementService.newReimbursement(request);
 
 		case "/EmployeeReimbursementSystem/approve.do":
-			if (request.getSession().getAttribute("currentEmployee") == null) {
-				LogThis.info("MasterDispatcher if currentEmployee == null");
+			try {
+				if (request.getSession().getAttribute("currentEmployee") == null) {
+
+					LogThis.info("MasterDispatcher if currentEmployee == null");
+					return "main.do";
+				}
+			} catch (Exception e) {
 				return "main.do";
 			}
 
@@ -94,8 +119,13 @@ public class MasterDispatcher {
 			}
 
 		case "/EmployeeReimbursementSystem/deny.do":
-			if (request.getSession().getAttribute("currentEmployee") == null) {
-				LogThis.info("MasterDispatcher if currentEmployee == null");
+			try {
+				if (request.getSession().getAttribute("currentEmployee") == null) {
+
+					LogThis.info("MasterDispatcher if currentEmployee == null");
+					return "main.do";
+				}
+			} catch (Exception e) {
 				return "main.do";
 			}
 
@@ -107,17 +137,13 @@ public class MasterDispatcher {
 				return "404.do";
 			}
 
-		case "/EmployeeReimbursementSystem/404.do":
-			LogThis.info("MasterDispatcher 404.do");
-			return NavigationService.fnf(request);
 
 		default:
 			LogThis.info("The request URI was: " + request.getRequestURI());
 			LogThis.info("Returning 404 from default");
-			return NavigationService.fnf(request);
+			return "404.jsp";
 
 		}
-		
 
 	}
 
