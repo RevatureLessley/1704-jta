@@ -71,7 +71,8 @@ window.onload = function(){
                     row.appendChild(tdStatus);
                     tdAnchor.appendChild(linkText);
                     tdAnchor.title = "View";
-                    tdAnchor.href = "reimbursementImage.jsp?id="+rebur;
+                    tdAnchor.href = "reimbursementImage.jsp";
+                    tdAnchor.id = id;
 					row.appendChild(tdAnchor);
 
 					

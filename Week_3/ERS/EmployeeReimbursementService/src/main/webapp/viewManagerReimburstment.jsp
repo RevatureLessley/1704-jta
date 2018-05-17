@@ -105,7 +105,9 @@ window.onload = function(){
                     let tdDateSub = document.createElement("td");
                     let tdDateApp = document.createElement("td");
                     let tdStatus = document.createElement("td");
-
+                    let tdView = document.createElement("td");
+                    let tdAnchor = document.createElement("a");
+					let linkText = document.createTextNode("View");
                     
 					                    
                     tdId.textContent = id;
@@ -129,6 +131,11 @@ window.onload = function(){
                     row.appendChild(tdStatus);
                     row.appendChild(tdDateApp);
 					row.appendChild(tdAppId);
+					tdAnchor.appendChild(linkText);
+                    tdAnchor.title = "View";
+                    tdAnchor.href = "reimbursementImage.jsp";
+                    tdAnchor.id = id;
+					row.appendChild(tdAnchor);
                    
                     //Append the row
 

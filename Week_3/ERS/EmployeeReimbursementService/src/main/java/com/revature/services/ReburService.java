@@ -1,9 +1,11 @@
 package com.revature.services;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
@@ -25,6 +27,7 @@ import com.revature.exceptions.ReimbursmentSubmissionException;
 import com.revature.reimbursement.Category;
 import com.revature.reimbursement.Reimbursment;
 
+@MultipartConfig
 public class ReburService {
 	private ReburService(){}
 	private static final Logger logger = Logger.getLogger(EmployeeDaoImpl.class);
@@ -36,10 +39,18 @@ public class ReburService {
 		InputStream inputStream = null;
 		
 		try {
-			String part = request.getParameter("photo");
 			Part filePart = request.getPart("photo");
 			inputStream = filePart.getInputStream();
-			Reimbursment rebur = new Reimbursment(Category.stringToCat(cat), Integer.parseInt(amount),man.getId(),inputStream);
+			ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+			int length;
+			byte[] data = new byte[16384];
+
+			while ((length = inputStream.read(data, 0, data.length)) != -1) {
+			  buffer.write(data, 0, length);
+			}
+
+			buffer.flush();
+			Reimbursment rebur = new Reimbursment(Category.stringToCat(cat), Integer.parseInt(amount),man.getId(),buffer.toByteArray());
 			ReimbursementService.submitReimbursment(rebur);
 			String rebursementJson = new Gson().toJson(ReimbursementService.getReimbursmentForEmployee(man.getUsername()));
 			request.getSession().setAttribute("reimbursements", rebursementJson);
@@ -55,6 +66,7 @@ public class ReburService {
 			logger.error(ioe.getMessage(), ioe);
 		} catch (ServletException se) {
 			logger.error(se.getMessage(), se);
+			System.out.println(se.getMessage());
 		} 
 		return"/viewManagerReimburstment.jsp";
 	}
@@ -66,7 +78,16 @@ public class ReburService {
 		try {
 			Part filePart = request.getPart("photo");
 			inputStream = filePart.getInputStream();
-			Reimbursment rebur = new Reimbursment(Category.stringToCat(cat), Integer.parseInt(amount),emp.getId(),inputStream);
+			ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+			int length;
+			byte[] data = new byte[16384];
+
+			while ((length = inputStream.read(data, 0, data.length)) != -1) {
+			  buffer.write(data, 0, length);
+			}
+
+			buffer.flush();
+			Reimbursment rebur = new Reimbursment(Category.stringToCat(cat), Integer.parseInt(amount),emp.getId(),buffer.toByteArray());
 			ReimbursementService.submitReimbursment(rebur);
 			String rebursementJson = new Gson().toJson(ReimbursementService.getReimbursmentForEmployee(emp.getUsername()));
 			request.getSession().setAttribute("reimbursements", rebursementJson);

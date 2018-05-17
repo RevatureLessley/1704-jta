@@ -19,6 +19,8 @@ public class ConnectionUtil {
 		Connection conn;
 		
 		try {
+			DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
+			//conn.DriverManager.getConnection(System.getenv("jdbc.url"),System.getenv("jdbc.username"),System.getenv("jdbc.password"));
 			DriverManager.registerDriver(new
 					oracle.jdbc.driver.OracleDriver());
 					conn = DriverManager.getConnection(url,username,password);

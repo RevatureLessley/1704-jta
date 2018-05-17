@@ -74,6 +74,7 @@ public class LoginService {
 		}
 		public static String logout(HttpServletRequest request, HttpServletResponse responce) {
 			request.getSession().removeAttribute("authorizedUser");
+			request.getSession().invalidate();
 			return "index.jsp";
 		}
 	}

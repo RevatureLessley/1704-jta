@@ -89,10 +89,10 @@ END;
 /
 
 
-CREATE OR REPLACE PROCEDURE insert_reimbursement (new_category IN VARCHAR2, new_amount IN NUMBER,new_submitter_id IN NUMBER)
+CREATE OR REPLACE PROCEDURE insert_reimbursement (new_category IN VARCHAR2, new_amount IN NUMBER,new_submitter_id IN NUMBER, new_photo in blob)
 AS
 BEGIN
-    INSERT INTO reimbursement(category,amount,SUBMITTER_ID) VALUES(new_category,new_amount,new_submitter_id);
+    INSERT INTO reimbursement(category,amount,SUBMITTER_ID,photo) VALUES(new_category,new_amount,new_submitter_id,new_photo);
 END;
 /
 
@@ -194,8 +194,4 @@ upgrade(4);
 UPDATE_Man(4,'megan','smith',null,null);
 end;
 /
-insert into employee values('megan','password',4);
-insert into generic_employee values ('megan','smith','','',4);
-select * from FINANCE_MANAGER;
-select * from generic_employee;
-commit;
+select * from REIMBURSEMENT;

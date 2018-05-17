@@ -1,11 +1,11 @@
 package com.revature.reimbursement;
 
-import java.io.InputStream;
+
 import java.sql.Date;
 
 public class Reimbursment {
 private Category cat;
-private InputStream photo;
+private byte[] photo;
 private int approverId,sumbitterId,reimburseId,amount;
 private Date timeApproved,timeSubmitted;
 private boolean approved;
@@ -17,7 +17,7 @@ public Reimbursment() {
 }
 
 public Reimbursment(Category cat, int approverId, int submitterId, int reimburseId, int amount, Date timeApproved,
-		Date timeSubmitted, int approved,InputStream photo) {
+		Date timeSubmitted, int approved,byte[] photo) {
 	super();
 	this.cat = cat;
 	this.approverId = approverId;
@@ -51,7 +51,7 @@ public Reimbursment(Category cat, int amount,int reimburseId, int approved) {
 	this.reimburseId = reimburseId;
 	this.approved = approved == 1;
 }
-public Reimbursment(Category cat, int amount,int sumbitterId,InputStream photo) {
+public Reimbursment(Category cat, int amount,int sumbitterId,byte[] photo) {
 	super();
 	this.photo = photo;
 	this.cat = cat;
@@ -59,11 +59,11 @@ public Reimbursment(Category cat, int amount,int sumbitterId,InputStream photo) 
 	this.sumbitterId = sumbitterId;
 }
 
-public InputStream getphoto() {
+public byte[] getphoto() {
 	return photo;
 }
 
-public void setphoto(InputStream photo) {
+public void setphoto(byte[] photo) {
 	this.photo = photo;
 }
 

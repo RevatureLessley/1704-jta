@@ -13,20 +13,35 @@
 
 
 <script type="text/javascript">
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            $('#blah')
-                .attr('src', e.target.result)
-                .width(150)
-                .height(200);
-        };
-
-        reader.readAsDataURL(input.files[0]);
-    }
+window.onload = function(){
+    loadImage();
 }
+
+function loadImage() {
+
+	let xhr = new XMLHttpRequest();
+
+	
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState == 4 && xhr.status == 200) {
+			<%@ page import="com.revature.dao.ReimbursementService" %>
+
+			var tmp =	<%=request.getParameter("id") %>;
+			
+			if(tmp == null){
+			console.log(tmp);
+			test = <%= ReimbursementService.getReimbursmentByIdString(0)%>;
+			}
+			else{
+				test = <%= ReimbursementService.getReimbursmentByIdString(request.getParameter("id"))%>;
+			}
+			
+		}
+	}
+	
+    xhr.open("POST", "/EmployeeReimbursementService/viewEmployeeReimburstment.jsp");
+    xhr.send();
+};
 </script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script
