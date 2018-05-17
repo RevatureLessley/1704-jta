@@ -32,7 +32,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			FileInputStream fis = new FileInputStream(filePath);
 
 			CallableStatement stmt = conn.prepareCall("{CALL insert_reimbursement(?, ?, ?, ?)}");
-			stmt.setInt(++index, reimbursement.getRequestorId());
+			stmt.setDouble(++index, reimbursement.getRequestorId());
 			stmt.setString(++index, reimbursement.getCategory());
 			stmt.setString(++index, reimbursement.getAmountString());
 			stmt.setBinaryStream(++index, fis, fis.available());

@@ -22,7 +22,7 @@ public class Reimbursement implements Serializable {
 	private String category;
 	private int statusId;
 	private String status;
-	private int amount;
+	private double amount;
 	private String amountString;
 	private String submitted;
 	private String approved;
@@ -40,7 +40,7 @@ public class Reimbursement implements Serializable {
 	}
 
 	// Public constructor that takes the requestor's id, category, and amount
-	public Reimbursement(int requestorId, int categoryId, int amount) {
+	public Reimbursement(int requestorId, int categoryId, double amount) {
 		super();
 		this.requestorId = requestorId;
 		this.categoryId = categoryId;
@@ -55,7 +55,7 @@ public class Reimbursement implements Serializable {
 	}
 
 	// Public constructor that takes fields to input into the database
-	public Reimbursement(int id, int requestorId, int approverId, int categoryId, int statusId, int amount,
+	public Reimbursement(int id, int requestorId, int approverId, int categoryId, int statusId, double amount,
 			String submitted, String approved) {
 		super();
 		this.id = id;
@@ -70,7 +70,7 @@ public class Reimbursement implements Serializable {
 
 	// This is the constructor used to display the info
 	public Reimbursement(int id, int requestorId, String requestorName, String approverName, String category,
-			String status, int amount, String submitted, String approved) {
+			String status, double amount, String submitted, String approved) {
 		super();
 		this.id = id;
 		this.requestorId = requestorId;
@@ -84,7 +84,7 @@ public class Reimbursement implements Serializable {
 	}
 
 	public Reimbursement(int id, int requestorId, String requestorName, String approverName, String category,
-			String status, int amount, String submitted, String approved, Blob image) {
+			String status, double amount, String submitted, String approved, Blob image) {
 		super();
 		this.id = id;
 		this.requestorId = requestorId;
@@ -176,11 +176,11 @@ public class Reimbursement implements Serializable {
 		this.statusId = statusId;
 	}
 
-	public int getAmount() {
+	public double getAmount() {
 		return amount;
 	}
 
-	public void setAmount(int amount) {
+	public void setAmount(double amount) {
 		this.amount = amount;
 	}
 
@@ -236,7 +236,7 @@ public class Reimbursement implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + amount;
+		result = (int) (prime * result + amount);
 		result = prime * result + ((approved == null) ? 0 : approved.hashCode());
 		result = prime * result + approverId;
 		result = prime * result + categoryId;

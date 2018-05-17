@@ -139,7 +139,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			while (rs.next()) {
 				list.add(new Reimbursement(rs.getInt("reimbursement_id"), rs.getInt("employee_id"), rs.getString("requestor_name"),
 						rs.getString("approver_name"), rs.getString("r_category"), rs.getString("r_status"),
-						rs.getInt("amount"), rs.getString("submitted"), rs.getString("resolved"), rs.getBlob("image")));
+						rs.getDouble("amount"), rs.getString("submitted"), rs.getString("resolved"), rs.getBlob("image")));
 			}
 			return list;
 		} catch (SQLException sqle) {
@@ -169,7 +169,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			while (rs.next()) {
 				list.add(new Reimbursement(rs.getInt("reimbursement_id"), rs.getInt("employee_id"), rs.getString("requestor_name"),
 						rs.getString("approver_name"), rs.getString("r_category"), rs.getString("r_status"),
-						rs.getInt("amount"), rs.getString("submitted"), rs.getString("resolved"), rs.getBlob("image")));
+						rs.getDouble("amount"), rs.getString("submitted"), rs.getString("resolved"), rs.getBlob("image")));
 			}
 			return list;
 		} catch (SQLException sqle) {
