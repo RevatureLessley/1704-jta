@@ -51,5 +51,10 @@ public class Pokemon {
 		this.name = name;
 	}
 
+	@Override
+	public String toString() {
+		return "Pokemon [id=" + id + ", name=" + name + "]";
+	}
+
 
 }

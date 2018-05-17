@@ -25,7 +25,6 @@ public class MasterDispatcher {
 	public static String process(HttpServletRequest request, HttpServletResponse response) {
 		LogThis.info("MasterDispatcher process");
 
-
 		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 		response.addHeader("Cache-Control", "post-check=0, pre-check=0");
 		response.setHeader("Pragma", "no-cache");

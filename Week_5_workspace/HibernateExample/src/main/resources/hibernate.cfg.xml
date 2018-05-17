@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <hibernate-configuration>
 	<session-factory>
-		<property name="hibernate.connection.url">jdbc:oracle:thin:@jta-1804.cc9fuhhtz6xr.us-east-1.rds.amazonaws.com:1521:ORCL</property>
-		<property name="hibernate.connection.username">hibernate_admin</property>
-		<property name="hibernate.connection.password">hibernate</property>
+
 		<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
 		<property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
 		<property name="hibernate.hbm2ddl.auto">update</property>
-		
+
 		<!-- One optional propety I want to provide -->
-		<property name="hibernate.show_sql">true</property>
-		
+		<property name="hibernate.show_sql">false</property>
+
 		<!-- For hbm.xml files, use the attribute 'resource' -->
 		<mapping resource="com/revature/hibernate/entity/Employee.hbm.xml"></mapping>
-		
+
 		<!-- For annotated files, use the attribute 'class' -->
 		<mapping class="com.revature.hibernate.entity.Pokemon"></mapping>
+		<mapping class="com.revature.hibernate.entity.Trainer"></mapping>
+		<mapping class="com.revature.hibernate.entity.Address"></mapping>
 	</session-factory>
 </hibernate-configuration>
