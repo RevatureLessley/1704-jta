@@ -25,6 +25,7 @@ public class Dispatcher {
 				return ReimbursementService.NewReimbursement(request, response);
 			case "/ERS/HTML/resolve.do":
 				return ReimbursementInformationService.Resolve(request, response);
+			//I was assigning a value to a button and couldn't get its value without setting it as an attribute
 			case "/ERS/HTML/getReim.do":
 				request.getSession().setAttribute("get", request.getParameter("get"));
 				return "/HTML/ViewEmployeeReimbursements.jsp";
