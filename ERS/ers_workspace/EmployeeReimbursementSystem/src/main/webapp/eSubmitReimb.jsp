@@ -50,7 +50,7 @@
                             <input type="number" name="amount" required step=".01">
                         </div>
                         <br>
-                        <div class="container" style="display: none;">
+                        <div class="container">
                             <h3>Upload a receipt: </h3>
                         </div>
                         <br>

@@ -1,6 +1,8 @@
 package com.revature.service;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.revature.factories.LoginFactory;
 import com.revature.logging.InvalidLoginException;
@@ -22,6 +24,9 @@ public class NavigationService {
 			Employee currentEmployee = LoginFactory.userLogin(temp);
 //			LogThis.info("currentEmployee in login in NavigationService " + currentEmployee.toString());
 			request.getSession().setAttribute("currentEmployee", currentEmployee);
+			if (currentEmployee == null) {
+				return "main.do";
+			}
 			if (currentEmployee.isFinancialManager()) {
 				return "finManHome.do";
 			} else {
@@ -37,9 +42,26 @@ public class NavigationService {
 		return "404.do";
 	}
 
-	public static String logout(HttpServletRequest request) {
-		request.getSession().removeAttribute("currentEmployee");
-		request.getSession().invalidate();
+	public static String logout(HttpServletRequest request, HttpServletResponse response) {
+		try { 
+		HttpSession session = request.getSession(false);
+		
+		if (session.getAttribute("currentEmployee") == null) {
+//			response.sendRedirect("/main.do");
+			return "main.do";
+		}
+		
+		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+		response.addHeader("Cache-Control", "post-check=0, pre-check=0");
+		response.setHeader("Pragma", "no-cache");
+		response.setDateHeader("Expires", 0);
+		
+		session.setAttribute("currentEmployee", null);
+		session.invalidate();
+//		response.sendRedirect("/main.do");
+		} catch (Exception e) {
+			return "main.do";
+		}
 		return "main.do";
 	}
 
@@ -50,7 +72,6 @@ public class NavigationService {
 	public static String userUpdate(HttpServletRequest request) {
 		Employee temp = (Employee) request.getSession().getAttribute("currentEmployee");
 		int id = temp.getId();
-		System.out.println("id in userUpdate" + id);
 		String username = request.getParameter("username");
 		boolean isFinancialManager = temp.isFinancialManager();
 		String firstname = request.getParameter("firstname");

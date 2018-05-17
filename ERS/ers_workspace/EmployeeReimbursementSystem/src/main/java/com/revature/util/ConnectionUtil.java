@@ -21,6 +21,8 @@ public class ConnectionUtil {
 			Properties props = new Properties();
 			props.load(in);
 			Class.forName("oracle.jdbc.OracleDriver");
+//			return DriverManager.getConnection(System.getenv("jdbc.url"), System.getenv("jdbc.username"),
+//					System.getenv("jdbc.password"));
 			return DriverManager.getConnection(props.getProperty("jdbc.url"), props.getProperty("jdbc.username"),
 					props.getProperty("jdbc.password"));
 
@@ -29,11 +31,11 @@ public class ConnectionUtil {
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
 		} catch (SQLException sqle) {
-			System.err.println(sqle.getMessage());
-			System.err.println("SQL State: " + sqle.getSQLState());
-			System.err.println("Error Code: " + sqle.getErrorCode());
+			LogThis.warn(sqle.getMessage());
+			LogThis.warn("SQL State: " + sqle.getSQLState());
+			LogThis.warn("Error Code: " + sqle.getErrorCode());
 		} catch (ClassNotFoundException cnfe) {
-			System.err.println(cnfe.getMessage());
+			LogThis.warn(cnfe.getMessage());
 		}
 		return null;
 	}

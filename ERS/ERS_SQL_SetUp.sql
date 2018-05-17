@@ -419,4 +419,3 @@ SELECT * FROM R_STATUS;
 SELECT * FROM R_CATEGORY;
 -------------------------
 -------------------------
-

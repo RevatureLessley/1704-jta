@@ -21,6 +21,8 @@ public class MasterServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		LogThis.info("MasterServlet doGet");
+		request.getSession(true);
 		request.getRequestDispatcher(MasterDispatcher.process(request, response)).forward(request, response);
 
 	}

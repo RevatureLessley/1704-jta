@@ -34,6 +34,12 @@
 		<description></description>
 		<servlet-class>com.revature.servlets.AjaxServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>LogoutServlet</servlet-name>
+		<display-name>LogoutServlet</display-name>
+		<description></description>
+		<servlet-class>com.revature.servlets.LogoutServlet</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>MasterServlet</servlet-name>
 		<url-pattern>*.do</url-pattern>
@@ -45,6 +51,10 @@
 	<servlet-mapping>
 		<servlet-name>AjaxServlet</servlet-name>
 		<url-pattern>*.ajax</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LogoutServlet</servlet-name>
+		<url-pattern>/Logout</url-pattern>
 	</servlet-mapping>
 
 	<welcome-file-list>

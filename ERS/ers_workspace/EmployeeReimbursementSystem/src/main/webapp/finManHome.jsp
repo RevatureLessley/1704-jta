@@ -39,7 +39,7 @@
                 <br>
                 <br>
                 <div class="container">
-                    <form action="logout.do" method="POST">
+                    <form action="Logout" method="POST">
                         <input id="logoutBtn" type="submit" value="Logout">
                     </form>
                     <br>

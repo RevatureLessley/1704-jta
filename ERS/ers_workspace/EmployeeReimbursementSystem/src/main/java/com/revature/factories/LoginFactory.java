@@ -15,7 +15,6 @@ public class LoginFactory {
 //		LogThis.info("do i get here 5");
 
 		if (isFinMan) {
-
 			return FinancialManagerService.login(new FinancialManager(employee.getUsername(), employee.getPassword()));
 		} else {
 			return EmployeeService.login(employee);
