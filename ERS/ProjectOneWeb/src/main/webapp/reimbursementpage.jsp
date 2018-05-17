@@ -24,10 +24,35 @@
 	<%
 		Employee employee = (Employee) request.getSession().getAttribute("authorizedUser");
 		List<Reimbursement> reimbursementlist = ReimbursementDaoService.getAllReimbursements();
-		List<Reimbursement> reimbursementlistp = ReimbursementDaoService.getPendingReimbursements();
-		List<Reimbursement> reimbursementlista = ReimbursementDaoService.getApprovedReimbursements();
-		List<Reimbursement> reimbursementlistr = ReimbursementDaoService.getRejectedReimbursements();
 	%>
+	<%
+	boolean loggedin = false;
+	boolean managerstatus = true;
+	try{
+		HttpServletResponse httpResponse = (HttpServletResponse)response;
+
+		httpResponse.setHeader("Cache-Control","no-cache, no-store, must-revalidate"); 
+		response.addHeader("Cache-Control", "post-check=0, pre-check=0");
+		httpResponse.setHeader("Pragma","no-cache"); 
+		httpResponse.setDateHeader ("Expires", 0); 
+		if (session.getAttribute("authorizedUser") == null ) {                               
+										 response.sendRedirect("/invalidSession.jsp");
+										 return;
+		 }
+
+
+		if(employee != null){
+			loggedin = true;
+			if(employee.isManagerstatus()){
+				managerstatus = true;
+			}
+		}
+	} catch(ClassCastException cce){
+		cce.getMessage();
+	}
+	%>
+
+	
 	<!-- Main Navbar -->
 	<div class="container">
 		<nav class="navbar navbar-inverse">
@@ -42,7 +67,8 @@
 				<li><a class="btn btn-default" href="./reimbursementpage.jsp" role="button">Reimbursements</a></li>
 				<% if(employee.isManagerstatus()){ %>
 				<li><a class="btn btn-default" href="./employeelist.jsp" role="button">Employee Info</a></li>
-				<% } %>			</ul>
+				<% } %>			
+			</ul>
 			<ul class="navbar-nav nav navbar-right col-md-2 col-md-offset-3">
                 <li><a href="./logout.jsp">Log Out <span class="glyphicon glyphicon-log-out"></span></a></li>
             </ul>	
@@ -57,12 +83,7 @@
 
 		</ol>
 	</div>
-	
-	
-	
-	
-	
-	
+
 	
 	
 	<div class="container well">
@@ -129,8 +150,8 @@
 						<tbody id="reimbursement_Table">
 						<%
 							for (Reimbursement r : reimbursementlist) {
+								if (r.getStatus().equals("pending")) {
 						%>
-						<% if (r.getStatus().equals("pending")) { %>
 						<tr>
 							<td><%=r.getId()%></td>
 							<td><%=r.getCategory()%></td>
@@ -157,7 +178,7 @@
 							<td><%=r.getTimemade().toGMTString()%></td>
 							<td><%=r.getTimeapproved().toGMTString()%></td>
 							<td><%if(r.getImagestring() != null){ %>
-								<img src="data:image/png;base64,<%=r.getImagestring() %>"> <% } %>
+								<img id="myImg" height="42" width="42" src="data:image/png;base64,<%=r.getImagestring() %>"> <% } %>
 							</td>						
 						</tr>
 						<% } %>
@@ -171,7 +192,7 @@
 		<div id="infoReimbursementButton" style="display: none;">
 			<div class="col-md-12">
 				<h3>Here is a list of all your reimbursements:</h3>
-  				<input class="form-control" id="reimbursement_Filter" type="text" placeholder="Filter list here">
+  				<input class="form-control" id="reimbursement_Filter2" type="text" placeholder="Filter list here">
 					<table class="table table-bordered table-striped">
 						<thead>
 							<tr>
@@ -187,7 +208,7 @@
 								<th>Image</th>
 							</tr>
 						</thead>	
-						<tbody id="reimbursement_Table">
+						<tbody id="reimbursement_Table2">
 						<%
 							for (Reimbursement r : reimbursementlist) {
 								if(r.getRequestor_id() == employee.getId()){
@@ -203,8 +224,9 @@
 							<td></td>
 							<td><%=r.getTimemade().toGMTString()%></td>
 							<td> </td>
-							<td><%if(r.getImage() != null){ %> <%=r.getImage()%> <% } %></td>
-						<tr>
+							<td><%if(r.getImagestring() != null){ %>
+								<img id="myImg" height="42" width="42" src="data:image/png;base64,<%=r.getImagestring() %>"> <% } %>
+							</td>								<tr>
 						<% } else { %>
 						<tr>
 							<td><%=r.getId()%></td>
@@ -216,8 +238,9 @@
 							<td><%=r.getReason() %></td>
 							<td><%=r.getTimemade().toGMTString()%></td>
 							<td><%=r.getTimeapproved().toGMTString()%></td>
-							<td><%if(r.getImage() != null){ %> <%=r.getImage()%> <% } %></td>
-						<tr>
+							<td><%if(r.getImagestring() != null){ %>
+								<img id="myImg" height="42" width="42" src="data:image/png;base64,<%=r.getImagestring() %>"> <% } %>
+							</td>								<tr>
 						<% } %>
 						<% } %>
 						<% } %>
@@ -233,7 +256,7 @@
 			<div class="col-md-12">
 				<h2>Please note, if you made a request, another manager is required to approve it.</h2>
 				<h3>Here is a list of pending reimbursements:</h3>
-  				<input class="form-control" id="pending_Filter" type="text" placeholder="Filter list here">
+  				<input class="form-control" id="pending_Filter2" type="text" placeholder="Filter list here">
 				<form action="/ProjectOneWeb/ReimbursementApprovalServlet" method="POST">
 					<table class="table table-bordered table-striped">
 						<thead>
@@ -243,11 +266,13 @@
 								<th>Amount</th>
 								<th>Requestor ID</th>
 								<th>Time Made</th>
+								<th>Image</th>
 							</tr>
 						</thead>	
-						<tbody id="pending_Table">
+						<tbody id="pending_Table2">
 						<%
-							for (Reimbursement r : reimbursementlistp) {
+							for (Reimbursement r : reimbursementlist) {
+								if(r.getStatus().equals("pending")){
 						%>
 						<tr>
 							<td><%=r.getId()%></td>
@@ -255,15 +280,18 @@
 							<td><%=r.getAmount()%></td>
 							<td><%=r.getRequestor_id()%></td>
 							<td><%=r.getTimemade().toGMTString()%></td>
+							<td><%if(r.getImagestring() != null){ %>
+								<img id="myImg" height="42" width="42" src="data:image/png;base64,<%=r.getImagestring() %>"> <% } %>
+							</td>		
 						<% if(r.getRequestor_id() != employee.getId()){ %>
-								<td><input type="checkbox" name="approval" value=<%="approved" + r.getId() + r.getCategory()%>>
+								<td><input type="button" name="approval" value=<%="approved" + r.getId() + r.getCategory()%>>
 								<label for="Approve">Approve</label></td>
-								<td><input type="checkbox" name="approval" value=<%="rejected" + r.getId() + r.getCategory()%>>
+								<td><input type="button" name="approval" value=<%="rejected" + r.getId() + r.getCategory()%>>
 								<label for="Reject">Reject</label></td>
 								<td><input type="text" name="reasongiven" class="form-control" placeholder="Explain your reasoning here..">
 						<% } %>
 						</tr>
-						<% } %>
+						<% } }%>
 				
 					</tbody>
 	
@@ -277,7 +305,7 @@
 	</div>
 
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+	<script>
 		$(document).ready(function(){
 		  $("#reimbursement_Filter").on("keyup", function() {
 		    var value = $(this).val().toLowerCase();
@@ -292,6 +320,26 @@
 		  $("#pending_Filter").on("keyup", function() {
 		    var value = $(this).val().toLowerCase();
 		    $("#pending_Table tr").filter(function() {
+		      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+		    });
+		  });
+		});
+	</script>
+	<script>
+		$(document).ready(function(){
+		  $("#reimbursement_Filter2").on("keyup", function() {
+		    var value = $(this).val().toLowerCase();
+		    $("#reimbursement_Table2 tr").filter(function() {
+		      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+		    });
+		  });
+		});
+	</script>
+	<script>
+		$(document).ready(function(){
+		  $("#pending_Filter2").on("keyup", function() {
+		    var value = $(this).val().toLowerCase();
+		    $("#pending_Table2 tr").filter(function() {
 		      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 		    });
 		  });

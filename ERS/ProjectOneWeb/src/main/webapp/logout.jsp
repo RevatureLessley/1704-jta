@@ -10,7 +10,22 @@
 </head>
 
 	<%@ page import="com.revature.model.Employee"%>
-	<%Employee employee = (Employee) request.getSession().getAttribute("authorizedUser");%>
+	<%
+	boolean loggedin = false;
+	boolean managerstatus = false;
+	try{
+		Employee employee = (Employee) request.getSession().getAttribute("authorizedUser");
+		if(employee != null){
+			loggedin = true;
+			if(employee.isManagerstatus()){
+				managerstatus = true;
+			}
+		}
+	} catch(ClassCastException cce){
+		cce.getMessage();
+	}
+	
+	%>
 
 	<!-- Main Navbar -->
 	<div class="container">
@@ -24,7 +39,9 @@
 				<li><a href="./services.jsp">Services</a></li>
 				<li><a href="./contact.jsp">Contact</a></li>
 				<li><a class="btn btn-default" href="./reimbursementpage.jsp" role="button">Reimbursements</a></li>
+				<% if(managerstatus){ %>
 				<li><a class="btn btn-default" href="./employeelist.jsp" role="button">Employee Info</a></li>
+				<% } %>
 			</ul>
 			<ul class="navbar-nav nav navbar-right col-md-offset-3">
                 <li class="active"><a href="./logout.jsp">Log Out <span class="glyphicon glyphicon-log-out"></span></a></li>

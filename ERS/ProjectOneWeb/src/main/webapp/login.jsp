@@ -9,9 +9,7 @@
 	<link rel="stylesheet" href="./stylesheet.css">
 </head>
 
-	<%
-		request.getSession().setAttribute("authorizedUser", "");
-	%>
+	<% request.getSession().setAttribute("authorizedUser", ""); %>
 
 <body>
 	<!-- Main Navbar -->

@@ -13,8 +13,8 @@ public class Application {
 	public static void main(String[] args) {
 
 //		System.out.println("Program has begun ");
-//		Employee anotherperson = new Employee ("test", "testing", true, "adam", "lahey", "emailhere@gmail.com", 4168123456L);
-//		System.out.println(EmployeeDaoService.insertEmployee(anotherperson));
+		Employee anotherperson = new Employee ("test2", "testing", true, "vera", "rubin", "emailhere@gmail.com", 4168192456L);
+		System.out.println(EmployeeDaoService.insertEmployee(anotherperson));
 //		System.out.println("here now");
 //		
 //		System.out.println("Updated information? " + EmployeeDaoService.updateEmployee(anotherperson));

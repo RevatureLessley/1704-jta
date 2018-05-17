@@ -223,8 +223,12 @@ public class FoodReimbursement implements Reimbursement, Serializable{
 		
 		byte[] encoded;
 		try {
-			encoded = Base64.getEncoder().encode(imageblob.getBytes(1, (int)imageblob.length()));
-			imagestring = new String(encoded);
+			if(imageblob != null) {
+				encoded = Base64.getEncoder().encode(imageblob.getBytes(1, (int)imageblob.length()));
+				imagestring = new String(encoded);
+			} else {
+				imagestring = null;
+			}
 		} catch (SQLException sqle) {
 			LogHere.warn(sqle.getMessage());
 		}

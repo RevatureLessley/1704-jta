@@ -22,14 +22,33 @@
 	
 	<%
 	boolean loggedin = false;
+	boolean managerstatus = false;
 	try{
-	Employee test = (Employee) request.getSession().getAttribute("authorizedUser");
-	if(test != null)
-		loggedin = true;
+		HttpServletResponse httpResponse = (HttpServletResponse)response;
+
+		httpResponse.setHeader("Cache-Control","no-cache, no-store, must-revalidate"); 
+		response.addHeader("Cache-Control", "post-check=0, pre-check=0");
+		httpResponse.setHeader("Pragma","no-cache"); 
+		httpResponse.setDateHeader ("Expires", 0); 
+		if (session.getAttribute("authorizedUser") == null ) {                               
+										 response.sendRedirect("/invalidSession.jsp");
+										 return;
+		 }
+
+
+		Employee employee = (Employee) request.getSession().getAttribute("authorizedUser");
+		if(employee != null){
+			loggedin = true;
+			if(employee.isManagerstatus()){
+				managerstatus = true;
+			}
+		}
 	} catch(ClassCastException cce){
 		cce.getMessage();
 	}
 	%>
+	
+
 	
 	<!-- Main Navbar -->
 	<div class="container">
@@ -44,7 +63,9 @@
 				<li><a href="./contact.jsp">Contact</a></li>
 				<% if(loggedin){ %>
 				<li><a class="btn btn-default" href="./reimbursementpage.jsp" role="button">Reimbursements</a></li>
+				<% if(managerstatus){ %>
 				<li><a class="btn btn-default" href="./employeelist.jsp" role="button">Employee Info</a></li>
+				<% } %>
 				<% } %>
 			</ul>
 			<% if(loggedin){ %>
@@ -64,10 +85,10 @@
 	</div>
 
 
+
 	<%if(loggedin){ 
 		Employee employee = (Employee) request.getSession().getAttribute("authorizedUser");
 	%>
-
 <div class="container well">
 		<div class="container col-md-10 col-md-offset-1">
 			<div class="page-header">

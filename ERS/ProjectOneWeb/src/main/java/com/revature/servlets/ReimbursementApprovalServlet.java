@@ -3,7 +3,9 @@ package com.revature.servlets;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -26,12 +28,16 @@ public class ReimbursementApprovalServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Employee employee = (Employee) request.getSession().getAttribute("authorizedUser");
-		String[] names = request.getParameterValues("approval");
-		List list =  Arrays.asList(names); 
-		request.setAttribute("approval", list);
-		String reason_given = request.getParameter("reasongiven");
 		
-		for(Object reimbursementstring : list) {
+		String[] approval_rejection = request.getParameterValues("approval");
+		List a__r_list =  Arrays.asList(approval_rejection); 
+		request.setAttribute("approval", a__r_list);
+		
+		String[] reason = request.getParameterValues("reasongiven");
+		Queue<String> reason_list = new LinkedList<>(Arrays.asList(reason));
+		request.setAttribute("reasongiven", reason_list);
+		
+		for(Object reimbursementstring : a__r_list) {
 			if(((String) reimbursementstring).startsWith("approved")) {
 				System.out.println("Reimbursement with ID " +
 						((String) reimbursementstring).substring(8,10) + " has been approved");
@@ -40,7 +46,10 @@ public class ReimbursementApprovalServlet extends HttpServlet {
 				updatereimbursement.setId(Integer.parseInt(((String) reimbursementstring).substring(8, 10)));
 				updatereimbursement = ReimbursementDaoService.getReimbursementFromId(updatereimbursement.getId());
 				updatereimbursement.setApprover_id(employee.getId());
-				updatereimbursement.setReason(reason_given);
+				
+				updatereimbursement.setReason(reason_list.poll());
+//				updatereimbursement.setReason(reason_given);
+				
 				System.out.println(ReimbursementDaoService.approveReimbursement(updatereimbursement));
 			}
 			else {
@@ -51,7 +60,10 @@ public class ReimbursementApprovalServlet extends HttpServlet {
 				updatereimbursement.setId(Integer.parseInt(((String) reimbursementstring).substring(8, 10)));
 				updatereimbursement = ReimbursementDaoService.getReimbursementFromId(updatereimbursement.getId());
 				updatereimbursement.setApprover_id(employee.getId());
-				updatereimbursement.setReason(reason_given);
+				
+				updatereimbursement.setReason(reason_list.poll());
+//				updatereimbursement.setReason(reason_given);
+				
 				System.out.println(ReimbursementDaoService.rejectReimbursement(updatereimbursement));
 			}
 		}

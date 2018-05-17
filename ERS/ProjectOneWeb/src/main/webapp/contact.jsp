@@ -14,10 +14,15 @@
 	<%@ page import="com.revature.model.Employee"%>
 	<%
 	boolean loggedin = false;
+	boolean managerstatus = false;
 	try{
-	Employee employee = (Employee) request.getSession().getAttribute("authorizedUser");
-	if(employee != null)
-		loggedin = true;
+		Employee employee = (Employee) request.getSession().getAttribute("authorizedUser");
+		if(employee != null){
+			loggedin = true;
+			if(employee.isManagerstatus()){
+				managerstatus = true;
+			}
+		}
 	} catch(ClassCastException cce){
 		cce.getMessage();
 	}
@@ -36,7 +41,9 @@
 				<li class="active"><a href="./contact.jsp">Contact</a></li>
 				<% if(loggedin){ %>
 				<li><a class="btn btn-default" href="./reimbursementpage.jsp" role="button">Reimbursements</a></li>
+				<% if(managerstatus){ %>
 				<li><a class="btn btn-default" href="./employeelist.jsp" role="button">Employee Info</a></li>
+				<% } %>	
 				<% } %>
 			</ul>
 			<% if(loggedin){ %>

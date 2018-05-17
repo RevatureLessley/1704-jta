@@ -36,7 +36,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	public List<Reimbursement> getAllReimbursements() {
 		List<Reimbursement> reimbursementlist = new ArrayList<>();
 		try(Connection conn = ConnectionUtil.getConnection()) {
-			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM reimbursement");
+			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM reimbursement ORDER BY id");
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {				
 				Reimbursement newreimbursement = ReimbursementFactory.getReimbursement(rs.getString("category"));
@@ -68,7 +68,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	public List<Reimbursement> getPendingReimbursements() {
 		List<Reimbursement> reimbursementlist = new ArrayList<>();
 		try(Connection conn = ConnectionUtil.getConnection()) {
-			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM reimbursement WHERE status='pending'");
+			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM reimbursement WHERE status='pending' ORDER BY id");
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {				
 				Reimbursement newreimbursement = ReimbursementFactory.getReimbursement(rs.getString("category"));
@@ -99,7 +99,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	public List<Reimbursement> getApprovedReimbursements() {
 		List<Reimbursement> reimbursementlist = new ArrayList<>();
 		try(Connection conn = ConnectionUtil.getConnection()) {
-			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM reimbursement WHERE status='approved'");
+			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM reimbursement WHERE status='approved' ORDER BY id");
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {				
 				Reimbursement newreimbursement = ReimbursementFactory.getReimbursement(rs.getString("category"));
@@ -130,7 +130,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	public List<Reimbursement> getRejectedReimbursements() {
 		List<Reimbursement> reimbursementlist = new ArrayList<>();
 		try(Connection conn = ConnectionUtil.getConnection()) {
-			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM reimbursement WHERE status='rejected'");
+			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM reimbursement WHERE status='rejected' ORDER BY id");
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {				
 				Reimbursement newreimbursement = ReimbursementFactory.getReimbursement(rs.getString("category"));

@@ -15,11 +15,9 @@ public class AjaxDispatcher {
 		switch(request.getRequestURI()) {
 		
 		case "/ProjectOneWeb/getAllEmployees.ajax": 
-			System.out.println("run inside employeelist ajax");
 			return EmployeeDaoService.getAllEmployees();
 		
 		case "/ProjectOneWeb/getAllManagers.ajax": 
-			System.out.println("run inside managerlist ajax");
 			return EmployeeDaoService.getAllManagers();
 			
 

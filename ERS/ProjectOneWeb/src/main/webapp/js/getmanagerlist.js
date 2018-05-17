@@ -24,7 +24,8 @@ function getAllManagers() {
                 let lastname = employee.lastname;
                 let phonenumber = employee.phonenumber;
                 let email = employee.email;
-                let datehired = (employee.datehired).toString();
+                let datehired = employee;
+                
                 
                 let row = document.createElement("tr");
                 
@@ -43,7 +44,7 @@ function getAllManagers() {
                 tdLastname.textContent = lastname;
                 tdPhonenumber.textContent = phonenumber;
                 tdEmail.textContent = email;
-                tdDatehired.textContent = Date.parse(datehired);
+                tdDatehired.textContent = datehired;
 
                 row.appendChild(tdId);
                 row.appendChild(tdUsername);
@@ -81,7 +82,7 @@ function getAllEmployees() {
                 let lastname = employee.lastname;
                 let phonenumber = employee.phonenumber;
                 let email = employee.email;
-                let datehired = (employee.datehired).toString();
+                let datehired = employee.datehired;
                 
                 let row = document.createElement("tr");
                 
@@ -100,7 +101,7 @@ function getAllEmployees() {
                 tdLastname.textContent = lastname;
                 tdPhonenumber.textContent = phonenumber;
                 tdEmail.textContent = email;
-                tdDatehired.textContent = Date.parse(datehired);
+                tdDatehired.textContent = datehired;
 
                 row.appendChild(tdId);
                 row.appendChild(tdUsername);

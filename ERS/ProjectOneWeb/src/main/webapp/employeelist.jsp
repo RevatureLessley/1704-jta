@@ -19,12 +19,35 @@
 	<%@ page import="com.revature.daoservice.EmployeeDaoService"%>
 	<%@ page import="com.revature.daoservice.ReimbursementDaoService"%>
 	<%@ page import="java.util.List"%>
-
 	<%
 		Employee employee = (Employee) request.getSession().getAttribute("authorizedUser");
 		List<Employee> employeelist = EmployeeDaoService.getAllEmployees();
 		List<Employee> managerlist = EmployeeDaoService.getAllManagers();
 	%>
+	<%
+	boolean loggedin = false;
+	try{
+		HttpServletResponse httpResponse = (HttpServletResponse)response;
+
+		httpResponse.setHeader("Cache-Control","no-cache, no-store, must-revalidate"); 
+		response.addHeader("Cache-Control", "post-check=0, pre-check=0");
+		httpResponse.setHeader("Pragma","no-cache"); 
+		httpResponse.setDateHeader ("Expires", 0); 
+		if (session.getAttribute("authorizedUser") == null ) {                               
+										 response.sendRedirect("/invalidSession.jsp");
+										 return;
+		 }
+
+
+	if(employee != null)
+		loggedin = true;
+	} catch(ClassCastException cce){
+		cce.getMessage();
+	}
+	%>
+
+
+
 	
 	<!-- Main Navbar -->
 	<div class="container">
