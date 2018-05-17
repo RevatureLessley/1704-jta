@@ -2,9 +2,12 @@ package com.reavature.application;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+
 import com.revature.hibernate.entity.Address;
+import com.revature.hibernate.entity.Pokemon;
 import com.revature.hibernate.entity.Trainer;
-import com.revature.hibernate.services.AddressService;
 import com.revature.hibernate.services.TrainerService;
 import com.revature.hibernate.util.HibernateUtil;
 
@@ -67,16 +70,41 @@ public class Application {
 	
 	public static void main(String[] args) {
 		
-		Trainer t = TrainerService.getTrainer("Brock");
-		TrainerService.deleteTrainer(t);
+//		TrainerService.insertTrainer(new Trainer("Brock"), new Address("1234 Rocky Road", "Pewter City"));
 		
-		for (Address a : AddressService.getAllAddresses()) {
-			System.out.println(a);
-			System.out.println(a.getTrainer());
-		}
+//		Trainer brock = TrainerService.getTrainer("Brock");
+//		
+//		TrainerService.addPokemon("Brock", new Pokemon("Onix"));
+		
+//		TrainerService.insertTrainer(new Trainer("Lance"), new Address("5678 Dragon Court", "Elite Four"));
+//		TrainerService.addPokemon("Lance", new Pokemon("Kingdra"));
+//		TrainerService.addPokemon("Brock", new Pokemon("Rhydon"));
+//		TrainerService.addPokemon("Brock", new Pokemon("Golem"));
+//		TrainerService.addPokemon("Lance", new Pokemon("Onix"));
+
+		Trainer trainer = TrainerService.getTrainer("Lance");
+		TrainerService.deleteTrainer(trainer);
+
+
+//		Session session = null;
+//		try {
+//			session = HibernateUtil.getSessionFactory().openSession();
+//			List<Pokemon> pokemon = session.createQuery("from Pokemon", Pokemon.class).getResultList();
+//			for (Pokemon p : pokemon) {
+//				System.out.println(p);
+//				for (Trainer t : p.getTrainers()) {
+//					System.out.println(t);
+//				}
+//			}
+//		} catch (HibernateException he) {
+//			he.printStackTrace();
+//		} finally {
+//			HibernateUtil.shutdownSession(session);
+//		}
+		
+		
 		
 		HibernateUtil.shutdown();
-		
 	}
 }
 

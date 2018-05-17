@@ -5,6 +5,7 @@ import java.util.List;
 import com.revature.hibernate.dao.TrainerDao;
 import com.revature.hibernate.dao.TrainerDaoImpl;
 import com.revature.hibernate.entity.Address;
+import com.revature.hibernate.entity.Pokemon;
 import com.revature.hibernate.entity.Trainer;
 
 public class TrainerService {
@@ -28,6 +29,10 @@ public class TrainerService {
 		
 	public static boolean deleteTrainer(Trainer trainer) {
 		return dao.deleteTrainer(trainer);
+	}
+	
+	public static boolean addPokemon (String trainerName, Pokemon pokemon) {
+		return dao.addPokemon(trainerName, pokemon);
 	}
 
 }

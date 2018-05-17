@@ -1,10 +1,15 @@
 package com.revature.hibernate.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -20,6 +25,9 @@ public class Pokemon {
 
 	@Column(name = "POKEMON_NAME")
 	private String name;
+
+	@ManyToMany(mappedBy = "pokemon", cascade = CascadeType.ALL)
+	List<Trainer> trainers = new ArrayList<>();
 
 	public Pokemon() {
 	}
@@ -50,11 +58,22 @@ public class Pokemon {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	
+
+	public List<Trainer> getTrainers() {
+		return trainers;
+	}
+
+	public void setTrainers(List<Trainer> trainers) {
+		this.trainers = trainers;
+	}
 
 	@Override
 	public String toString() {
 		return "Pokemon [id=" + id + ", name=" + name + "]";
 	}
 
-
+	
+	
 }

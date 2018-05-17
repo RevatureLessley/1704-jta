@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 import com.revature.hibernate.entity.Address;
+import com.revature.hibernate.entity.Pokemon;
 import com.revature.hibernate.entity.Trainer;
 import com.revature.hibernate.util.HibernateUtil;
 
@@ -121,4 +122,58 @@ public class TrainerDaoImpl implements TrainerDao {
 		return false;
 	}
 
+	@Override
+	public boolean addPokemon(String trainerName, Pokemon pokemon) {
+		Session session = null;
+		Transaction trans = null;
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			trans = session.beginTransaction();
+			Trainer trainer = session.createQuery("from Trainer where name like :name", Trainer.class)
+										.setParameter("name", trainerName)
+										.getSingleResult();
+			trainer.getPokemon().add(pokemon);
+			pokemon.getTrainers().add(trainer);
+			session.update(trainer);
+			trans.commit();
+			System.out.println(pokemon.getName() + " successfully caught by " + trainer.getName());
+			return true;
+		} catch (HibernateException he) {
+			HibernateUtil.rollbackSession(trans);
+			he.printStackTrace();
+		} finally {
+			HibernateUtil.shutdownSession(session);
+		}
+		
+		return false;
+	}
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

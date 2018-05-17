@@ -1,12 +1,18 @@
 package com.revature.hibernate.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -24,9 +30,14 @@ public class Trainer {
 	@Column(name = "trainer_name")
 	private String name;
 
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "address_id")
 	private Address address;
+
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "trainer_pokemon", joinColumns = { @JoinColumn(name = "trainer_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "pokemon_id") })
+	List<Pokemon> pokemon = new ArrayList<>();
 
 	public Trainer() {
 	}
@@ -66,9 +77,18 @@ public class Trainer {
 		this.address = address;
 	}
 
+	public List<Pokemon> getPokemon() {
+		return pokemon;
+	}
+
+	public void setPokemon(List<Pokemon> pokemon) {
+		this.pokemon = pokemon;
+	}
+
 	@Override
 	public String toString() {
-		return "Trainer [id=" + id + ", name=" + name + "]";
+		return "Trainer [id=" + id + ", name=" + name  + "]";
 	}
+
 
 }

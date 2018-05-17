@@ -3,6 +3,7 @@ package com.revature.hibernate.dao;
 import java.util.List;
 
 import com.revature.hibernate.entity.Address;
+import com.revature.hibernate.entity.Pokemon;
 import com.revature.hibernate.entity.Trainer;
 
 public interface TrainerDao {
@@ -14,5 +15,7 @@ public interface TrainerDao {
 	boolean insertTrainer(Trainer trainer, Address address);
 	boolean updateTrainer(Trainer trainer);
 	boolean deleteTrainer(Trainer trainer);
+	
+	boolean addPokemon(String trainerName, Pokemon pokemon);
 	
 }
