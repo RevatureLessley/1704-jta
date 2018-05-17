@@ -133,8 +133,7 @@ window.onload = function(){
 					row.appendChild(tdAppId);
 					tdAnchor.appendChild(linkText);
                     tdAnchor.title = "View";
-                    tdAnchor.href = "reimbursementImage.jsp";
-                    tdAnchor.id = id;
+                    tdAnchor.href = "image.do?id="+id;
 					row.appendChild(tdAnchor);
                    
                     //Append the row

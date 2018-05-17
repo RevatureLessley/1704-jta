@@ -195,3 +195,4 @@ UPDATE_Man(4,'megan','smith',null,null);
 end;
 /
 select * from REIMBURSEMENT;
+commit;

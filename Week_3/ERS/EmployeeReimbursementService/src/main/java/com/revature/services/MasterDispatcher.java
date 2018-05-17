@@ -55,7 +55,8 @@ private MasterDispatcher() {
 			}
 		case"/EmployeeReimbursementService/newPending.do":
 			return ReburService.getNewPending(request, responce);
-			 
+		case"/EmployeeReimbursementService/image.do":
+			return ReburService.getImage(request, responce);	 
 		default: 
 			System.out.println("default");
 			return "404.jsp";

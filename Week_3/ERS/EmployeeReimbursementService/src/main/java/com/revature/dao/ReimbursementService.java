@@ -41,14 +41,7 @@ public class ReimbursementService{
 	public static Reimbursment getReimbursmentById(int id) throws NoReibursmentForIdException {
 		return dao.getReimbursmentById(id);
 	}
-	
-	public static Reimbursment getReimbursmentByIdString(String id) {
-		try {
-			return dao.getReimbursmentById(Integer.parseInt(id));
-		} catch (NumberFormatException | NoReibursmentForIdException e) {
-			return new Reimbursment();
-		}
-	}
+
 	
 	public static Reimbursment getReimbursmentByIdString(int id) {
 		try {

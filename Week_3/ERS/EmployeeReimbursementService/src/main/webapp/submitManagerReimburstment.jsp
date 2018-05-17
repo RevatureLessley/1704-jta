@@ -34,7 +34,7 @@
                 </div>
         <div class ="container">
         <div class ="col-md-6 col-offset-3">
-        <form enctype="mutlipart/form-data" action="reburMan.do" method="post">
+        <form enctype="multipart/form-data" action="reburMan.do" method="post" >
 				<div class="form-group">
 					<input type="text" name="category" class="form-control" required
 						placeholder="Category">
@@ -43,12 +43,11 @@
 					<input type="text" name="amount" class="form-control"
 						required placeholder="Amount">
 				</div>
-		
 				<div class="form-group">
-				<input type="file" name="photo" id ="photo" accept=".png">
+				<input type="file" name="uploadPhoto" size="500">
  				</div>
 				<div class="button-group">
-					<input type="submit" class="btn btn-success" value="Submit">
+					<input type="submit" class="btn btn-success" value="Submit" >
 					<input type="reset" class="btn btn-danger" value="Reset">
 				</div>
 			</form>

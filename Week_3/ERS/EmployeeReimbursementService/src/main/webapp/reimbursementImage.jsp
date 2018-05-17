@@ -11,37 +11,11 @@
 </head>
 <body>
 
-
+<img id="reburImage" src="" />
 <script type="text/javascript">
-window.onload = function(){
-    loadImage();
+	 window.onload = function(){
+	document.getElementById("ItemPreview").src = "data:image/png;base64," + <%=request.getSession().getAttribute("reburImage")%>
 }
-
-function loadImage() {
-
-	let xhr = new XMLHttpRequest();
-
-	
-	xhr.onreadystatechange = function() {
-		if (xhr.readyState == 4 && xhr.status == 200) {
-			<%@ page import="com.revature.dao.ReimbursementService" %>
-
-			var tmp =	<%=request.getParameter("id") %>;
-			
-			if(tmp == null){
-			console.log(tmp);
-			test = <%= ReimbursementService.getReimbursmentByIdString(0)%>;
-			}
-			else{
-				test = <%= ReimbursementService.getReimbursmentByIdString(request.getParameter("id"))%>;
-			}
-			
-		}
-	}
-	
-    xhr.open("POST", "/EmployeeReimbursementService/viewEmployeeReimburstment.jsp");
-    xhr.send();
-};
 </script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script

@@ -3,7 +3,9 @@ package com.revature.services;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Collection;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
@@ -27,7 +29,6 @@ import com.revature.exceptions.ReimbursmentSubmissionException;
 import com.revature.reimbursement.Category;
 import com.revature.reimbursement.Reimbursment;
 
-@MultipartConfig
 public class ReburService {
 	private ReburService(){}
 	private static final Logger logger = Logger.getLogger(EmployeeDaoImpl.class);
@@ -39,7 +40,9 @@ public class ReburService {
 		InputStream inputStream = null;
 		
 		try {
-			Part filePart = request.getPart("photo");
+			String test = request.getParameter("uploadPhoto");
+			System.out.println(test);
+			Part filePart = request.getPart("uploadPhoto");
 			inputStream = filePart.getInputStream();
 			ByteArrayOutputStream buffer = new ByteArrayOutputStream();
 			int length;
@@ -163,5 +166,20 @@ public class ReburService {
 		
 		
 		return "/viewManagerReimburstment.jsp";
+	}
+	public static String getImage(HttpServletRequest request, HttpServletResponse responce) {
+
+		int id = Integer.parseInt(request.getParameter("id"));
+	
+		Reimbursment reb;
+		try {
+			reb = ReimbursementService.getReimbursmentById(id);
+			byte[] photo = reb.getphoto();
+			request.getSession().setAttribute("reburImage", photo);
+		} catch (NoReibursmentForIdException nrfie) {
+			logger.error(nrfie.getMessage(), nrfie);
+		}
+		
+		return "/reimbursementImage.jsp";
 	}
 }
