@@ -1,12 +1,14 @@
 package com.revature.ajax;
 
-import java.util.Base64;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.revature.dao.Employee;
 import com.revature.dao.EmployeeService;
+import com.revature.image.Image;
+import com.revature.servlet.MasterDispatcher;
 
 public class AjaxDispatcher {
 	private AjaxDispatcher() {}
@@ -24,11 +26,12 @@ public class AjaxDispatcher {
 			Employee requested = (Employee) request.getSession().getAttribute("requestedUser");
 			return EmployeeService.getMyRequests(requested);
 		case "/SkaggsProjectOne/getImage.ajax":
-			//int reid = Integer.parseInt(request.getParameter("reid"));
-			byte[] image = EmployeeService.getImage(15);	
-			String image64 = Base64.getEncoder().encodeToString(image);
-			System.out.println(image64);
-			return image;
+			String reid = request.getParameter("request-id");
+			System.out.println("requestId " + reid);
+			System.out.println("current val 2" + MasterDispatcher.currentVal);
+			ArrayList<Image> imageList = EmployeeService.getImage();	
+			//String image64 = Base64.getEncoder().encodeToString(image);
+			return imageList;
 		default:
 			return new String("Not implemented");
 		}

@@ -3,6 +3,7 @@ package com.revature.dao;
 import java.sql.Blob;
 import java.util.ArrayList;
 
+import com.revature.image.Image;
 import com.revature.reimbursement.Reimbursement;
 
 public interface EmployeeDao {
@@ -18,6 +19,6 @@ public interface EmployeeDao {
 	ArrayList<Reimbursement> getAllRequests() throws ClassNotFoundException;
 	boolean updateRequest(Employee e, int reid, String approved);
 	ArrayList<Reimbursement> getMyRequests(Employee e) throws ClassNotFoundException;
-	byte[] getImage(int reid);
+	ArrayList<Image> getImage();
 	Reimbursement getRequest(int id) throws ClassNotFoundException;
 }

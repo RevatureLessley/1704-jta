@@ -1,6 +1,5 @@
 package com.revature.dao;
 
-import java.awt.Image;
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.revature.image.Image;
 import com.revature.reimbursement.Reimbursement;
 import com.revature.util.ConnectionUtil;
 
@@ -113,20 +113,26 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return null;
 	}
 	@Override
-	public byte[] getImage(int reid) {
+	public ArrayList<Image> getImage() {
+		System.out.println("Here we are in get Images");
 		try (Connection conn = ConnectionUtil.getConnection()) {
-	    	byte[] image = null;
-			PreparedStatement stmt = conn.prepareStatement("SELECT img FROM reimbursementTable " + 
-					"WHERE reid = " +  reid);			
+			ArrayList<Image> receiptList = new ArrayList<>();
+	    	byte[] img = null;
+			PreparedStatement stmt = conn.prepareStatement("SELECT reid,img FROM REIMBURSEMENTTABLE WHERE img IS NOT NULL");			
 			ResultSet rs = stmt.executeQuery();
-			while(rs.next()) {	
+			while(rs.next()) {
 				Blob blob = rs.getBlob("img");
+				System.out.println("the blob " + blob);
+				int id = rs.getInt("reid");
+				System.out.println("id "+ id);
 				int blobLength = (int) blob.length();  
-				image = blob.getBytes(1, blobLength);
+				img = blob.getBytes(1, blobLength);
 				blob.free();
-				System.out.println("Image" + image);
+				Image i = new Image(id, img);
+				System.out.println("Image" + img);
+				receiptList.add(i);
 			}
-			return image;
+			return receiptList;
 		} catch(SQLException sqle) {
 			System.err.println(sqle.getMessage());
 			System.err.println("SQL STATE " + sqle.getSQLState());

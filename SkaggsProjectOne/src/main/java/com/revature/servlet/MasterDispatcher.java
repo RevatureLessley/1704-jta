@@ -14,12 +14,12 @@ import com.revature.service.UpdateService;
 import com.revature.service.UserService;
 
 public class MasterDispatcher {
-
+	public static int currentVal;
 	public static String process(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, IOException, ServletException {
 		System.out.println("In master dispatcher");
 		switch(request.getRequestURI()) {
 		case "/SkaggsProjectOne/login.do":
-			return LoginService.login(request);
+			return LoginService.login(request, response);
 			
 		case "/SkaggsProjectOne/home.do":
 			return UserService.home(request);
@@ -38,6 +38,10 @@ public class MasterDispatcher {
 		case "/SkaggsProjectOne/request-update.do":
 			return  RequestByEmployee.request(request);
 			
+		case "/SkaggsProjectOne/odd.do":
+			currentVal = Integer.parseInt(request.getParameter("request-id"));
+			System.out.println("cuurent val 1" +currentVal);
+			return "";
 		default:
 			return "404.jsp";
 		}

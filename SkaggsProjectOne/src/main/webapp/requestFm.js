@@ -73,10 +73,15 @@ function displayImage() {
 
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState == 4 && xhr.status == 200) {
-			let image = JSON.parse(xhr.responseText);
-			console.log("imgage" + image);
-			document.getElementById("receipt").src = "data:image/png;base64," + image;
-			console.log("Here we are");
+			let requestId = document.getElementById("request-id").value;
+			let images = JSON.parse(xhr.responseText);
+			for (let image of images) {
+				console.log("request id " + requestId);
+				console.log("Image id " + image.id);
+				if (image.id == requestId) {
+					document.getElementById("receipt").src = "data:image/png;base64," + image.img;
+				}
+			}
 		}
 	}
 	

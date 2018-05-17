@@ -85,17 +85,16 @@
 	<div class="container">
 		<div class="col-md-7">
 			<h4>View Receipt</h4>
-			<form id="view-image-form" role="form">
-				<div>
-					<label for="inputId">Enter receipt Id</label> <input type="number"
-						id="reid" name="reid">
-				</div>
-				<div>
-					<input type="button" name="view-img-btn" id="view-img-btn"
-						class="form-control btn btn-submit" value="View Receipt"
-						onclick="displayImage();"> <img id="receipt"/>
-				</div>
-			</form>
+			<div>
+				<label for="inputId">Enter receipt Id</label> <input type="number"
+					id="request-id" name="request-id">
+			</div>
+			<div>
+
+				<input type="button" name="view-img-btn" id="view-img-btn"
+					class="form-control btn btn-submit" value="View Receipt"
+					onclick="displayImage();"> <img id="receipt" />
+			</div>
 		</div>
 
 	</div>
