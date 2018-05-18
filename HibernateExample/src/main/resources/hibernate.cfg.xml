@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect
+		</property>
+		<property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
+
+		<!-- One optional property I want to provide -->
+		<property name="hibernate.show_sql">false</property>
+		
+		<!-- Hibernate comes with an internal connection pool, however it is not suitable for 
+			 production. Use the Hibernate C3P0 third party connection pool for production -->
+			 
+		<!-- Hibernate's interal connection pool -->
+		<!-- <property name="hibernate.connection.pool_size">5</property> -->
+		
+		<!-- Check the properties file for Hibernate C3P0 configuration -->
+		
+		
+
+		<!-- Tells Hibernate to use L2 Caching -->
+		<property name="hibernate.cache.use_second_level_cache">true</property>
+
+		<!-- Tells Hibernate which class to use for caching, exposed from the org.hibernate.ehcache dependency -->
+		<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+		
+		<!-- Tells Hibernate the location of the ehcache.xml configuration file -->
+		<property name="net.sf.ehcache.configurationResourceName">/ehcache.xml</property>
+
+
+		<!-- For the hbm.xml files, use the attribute 'resource' -->
+		<mapping resource="com/revature/hibernate/entity/Employee.hbm.xml"></mapping>
+
+		<!-- For annotated files, use the attribute 'class' -->
+		<mapping class="com.revature.hibernate.entity.Pokemon"></mapping>
+		<mapping class="com.revature.hibernate.entity.Address"></mapping>
+		<mapping class="com.revature.hibernate.entity.Trainer"></mapping>
+		<mapping class="com.revature.hibernate.entity.Type"></mapping>
+	</session-factory>
+</hibernate-configuration>
