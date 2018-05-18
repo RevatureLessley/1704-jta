@@ -48,7 +48,6 @@ public class LoginService {
 					if(emp.getPassword().equals(EmployeeService.getPasswordHash(new GenericEmployee(username,password)))) {
 						GenericEmployee authorized = emp;
 						request.getSession().setAttribute("authorizedUser", authorized);
-						List<Reimbursment> list= ReimbursementService.getReimbursmentForEmployee(username);
 						String rebursementJson = new Gson().toJson(ReimbursementService.getReimbursmentForEmployee(authorized.getUsername()));
 						request.getSession().setAttribute("reimbursements", rebursementJson);
 						return "/employeeHome.do";

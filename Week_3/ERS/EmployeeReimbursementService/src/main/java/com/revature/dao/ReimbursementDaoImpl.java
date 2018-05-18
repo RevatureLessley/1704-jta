@@ -206,12 +206,11 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		@Override
 		public Reimbursment getReimbursmentById(int id) throws NoReibursmentForIdException {
 			int index = 0;
-			Reimbursment rebur = null;
 			try(Connection conn = ConnectionUtil.getConnection()){
 				PreparedStatement stmt = conn.prepareStatement("SELECT * FROM REIMBURSEMENT WHERE rebur_ID = ?");
 				stmt.setInt(++index, id);
 				ResultSet rs = stmt.executeQuery();
-				
+				if(rs.next()) {
 				if(rs.getBlob("photo")!= null) {
 					Blob image = rs.getBlob("photo");
 					int length = (int)image.length();
@@ -221,7 +220,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 					}
 					else
 						return new Reimbursment(Category.stringToCat(rs.getString("category")), rs.getInt("approver_id"), rs.getInt("submitter_id"),rs.getInt("rebur_id"),rs.getInt("amount"),rs.getDate("timeApproved"),rs.getDate("timeSubmitted"),rs.getInt("approved"));	
-			} catch(SQLException sqle) {
+			} }catch(SQLException sqle) {
 				logger.error(sqle.getMessage(), sqle);
 				logger.error(sqle.getSQLState(),sqle);
 				logger.error(sqle.getErrorCode(),sqle);

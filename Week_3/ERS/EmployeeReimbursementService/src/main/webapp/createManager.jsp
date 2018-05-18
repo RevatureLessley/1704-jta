@@ -11,7 +11,7 @@
 <body>
 			<%@ page import="com.revature.employee.FinanceManager" %>
 			<%FinanceManager man = (FinanceManager) request.getSession().getAttribute("authorizedUser"); %>
-
+			 <% if (man != null) { %>
             <div class="container">
                 <div class="jumbotron">
                     <h1 class="display-4">Update your info</h1>
@@ -58,6 +58,9 @@ function updateValues()
         xmlhttp.send("/managerRefresh.do");
 }
 </script>        
+                <% } else {%>
+
+<% } %>
                         <script src = "./userCreation.js"></script> 
                         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 

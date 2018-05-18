@@ -9,6 +9,9 @@
 	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	crossorigin="anonymous">
 </head>
+<%@ page import="com.revature.employee.FinanceManager" %>
+			<%FinanceManager man = (FinanceManager) request.getSession().getAttribute("authorizedUser"); %>
+			 <% if (man != null) { %>
 <body>
 	<div class="container">
 		<div class="jumbotron">
@@ -139,7 +142,9 @@ window.onload = function(){
 		</form>
 	</div>
 	</div>
+                <% } else {%>
 
+<% } %>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script

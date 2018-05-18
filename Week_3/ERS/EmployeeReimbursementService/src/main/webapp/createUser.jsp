@@ -9,15 +9,15 @@
     <link rel="stylesheet" href="../ReimbursementCss/bootstrap.css/">
 </head>
 <body>
+			<%@ page import="com.revature.employee.GenericEmployee" %>
+			<%GenericEmployee emp = (GenericEmployee) request.getSession().getAttribute("authorizedUser"); %>
+            <% if (emp != null) { %>
             <div class="container">
                 <div class="jumbotron">
                     <h1 class="display-4">Update your info</h1>
                     <hr class="my-4">
                 </div>
             </div>
-			
-			<%@ page import="com.revature.employee.GenericEmployee" %>
-			<%GenericEmployee emp = (GenericEmployee) request.getSession().getAttribute("authorizedUser"); %>
 			
            <div class="col-md-4 col-offset-2">
 			<form action="updateEmployee.do" method="post">
@@ -57,6 +57,9 @@ function updateValues()
         xmlhttp.send("/employeeRefresh.do");
 }
 </script> 
+                <% } else {%>
+
+<% } %>
                         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
     integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

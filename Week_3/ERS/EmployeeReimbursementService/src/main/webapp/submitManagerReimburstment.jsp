@@ -8,6 +8,9 @@
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
+			<%@ page import="com.revature.employee.FinanceManager" %>
+			<%FinanceManager man = (FinanceManager) request.getSession().getAttribute("authorizedUser"); %>
+			 <% if (man != null) { %>
             <div class="container">
                 <div class="jumbotron">
                     <h1 class="display-4">Submit a Reinburstment for approval</h1>
@@ -44,7 +47,7 @@
 						required placeholder="Amount">
 				</div>
 				<div class="form-group">
-				<input type="file" name="uploadPhoto" size="500">
+				<input type="file" name="uploadPhoto" size="500" accept=".png">
  				</div>
 				<div class="button-group">
 					<input type="submit" class="btn btn-success" value="Submit" >
@@ -53,6 +56,9 @@
 			</form>
         </div>
         </div>
+                        <% } else {%>
+
+<% } %>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
     integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

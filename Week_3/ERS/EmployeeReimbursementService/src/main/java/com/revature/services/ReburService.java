@@ -3,11 +3,10 @@ package com.revature.services;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Collection;
+import java.io.OutputStream;
+import java.sql.Blob;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
@@ -40,8 +39,6 @@ public class ReburService {
 		InputStream inputStream = null;
 		
 		try {
-			String test = request.getParameter("uploadPhoto");
-			System.out.println(test);
 			Part filePart = request.getPart("uploadPhoto");
 			inputStream = filePart.getInputStream();
 			ByteArrayOutputStream buffer = new ByteArrayOutputStream();
@@ -168,18 +165,36 @@ public class ReburService {
 		return "/viewManagerReimburstment.jsp";
 	}
 	public static String getImage(HttpServletRequest request, HttpServletResponse responce) {
-
-		int id = Integer.parseInt(request.getParameter("id"));
-	
-		Reimbursment reb;
-		try {
-			reb = ReimbursementService.getReimbursmentById(id);
-			byte[] photo = reb.getphoto();
-			request.getSession().setAttribute("reburImage", photo);
-		} catch (NoReibursmentForIdException nrfie) {
-			logger.error(nrfie.getMessage(), nrfie);
-		}
 		
+			byte[] imgData = (byte[]) request.getSession().getAttribute("rebImage");
+			
+          
+          try {
+        	  OutputStream out = responce.getOutputStream();
+  			  responce.setContentType("image/gif"); 
+        	  out.write(imgData);
+			 out.flush();
+			 out.close();
+		} catch (IOException ioe) {
+			logger.error(ioe.getMessage(),ioe);
+		}
+         
+		
+//		int id = Integer.parseInt(request.getParameter("id"));
+//	
+//		Reimbursment reb;
+//		try {
+//			reb = ReimbursementService.getReimbursmentById(id);
+//			byte[] photo = reb.getphoto();
+//			request.getSession().setAttribute("rebImage", Base64.getEncoder().encode(photo));
+//			request.getSession().getAttribute("rebImage");
+//		} catch (NoReibursmentForIdException nrfie) {
+//			logger.error(nrfie.getMessage(), nrfie);
+//		}
+//		
 		return "/reimbursementImage.jsp";
 	}
+	
+	
+	
 }

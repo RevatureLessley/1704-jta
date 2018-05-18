@@ -11,6 +11,7 @@
 <body>
 			<%@ page import="com.revature.employee.FinanceManager" %>
 			<%FinanceManager man = (FinanceManager) request.getSession().getAttribute("authorizedUser"); %>
+			 <% if (man != null) { %>
             <div class="container">
                 <div class="jumbotron">
                     <h1 class="display-4">Welcome Home Manager, <%= man.getFirstName() %></h1>
@@ -35,6 +36,9 @@
                         
                     </nav>
                 </div>
+                                <% } else {%>
+
+<% } %>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
     integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
