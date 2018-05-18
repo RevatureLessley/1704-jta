@@ -165,11 +165,15 @@ public class ReburService {
 		return "/viewManagerReimburstment.jsp";
 	}
 	public static String getImage(HttpServletRequest request, HttpServletResponse responce) {
+		int id = Integer.parseInt(request.getParameter("id"));
+	
+		Reimbursment reb;
 		
-			byte[] imgData = (byte[]) request.getSession().getAttribute("rebImage");
 			
           
           try {
+        	  reb = ReimbursementService.getReimbursmentById(id);
+      			byte[] imgData = reb.getphoto();
         	  OutputStream out = responce.getOutputStream();
   			  responce.setContentType("image/gif"); 
         	  out.write(imgData);
@@ -177,6 +181,8 @@ public class ReburService {
 			 out.close();
 		} catch (IOException ioe) {
 			logger.error(ioe.getMessage(),ioe);
+		} catch (NoReibursmentForIdException nrfie) {
+			logger.error(nrfie.getMessage(),nrfie);
 		}
          
 		
