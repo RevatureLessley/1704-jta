@@ -16,12 +16,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import org.apache.log4j.Logger;
+
 import com.revature.dao.ReimbursementDao;
 import com.revature.dao.ReimbursementDaoImpl;
 import com.revature.model.Employee;
 import com.revature.model.Reimbursement;
 
 public class ReimbursementService {
+	private static final Logger logger = Logger.getLogger(ReimbursementService.class);
 
 	private ReimbursementService() {}
 	private static ReimbursementDao dao = ReimbursementDaoImpl.getInstance();
@@ -37,26 +40,26 @@ public class ReimbursementService {
 	    fileContent.read(buffer);
 	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss");
 	    fileName=id+"-"+LocalDateTime.now().format(formatter)+fileName.substring(fileName.indexOf("."));
-	    System.out.println(fileName);
 	    File targetFile = new File("C:\\Users\\Daniel\\Documents\\workspace-sts-3.9.3.RELEASE\\Project1\\src\\main\\webapp\\images\\"+fileName);
 	    OutputStream outStream = new FileOutputStream(targetFile);
 	    outStream.write(buffer);
 	    outStream.close();
-	    try {
+		Reimbursement reimbursement=new Reimbursement(id, request.getParameter("category"), Double.parseDouble(request.getParameter("amount")), fileName);
+		try {
 			TimeUnit.SECONDS.sleep(2);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Reimbursement reimbursement=new Reimbursement(id, request.getParameter("category"), Double.parseDouble(request.getParameter("amount")), fileName);
+		
 		if(dao.insertReimbursement(reimbursement)) {
 			return "/viewPending.do";
 		}
 		}catch(ServletException se) {
-			se.getMessage();
+			logger.warn(se.getMessage());
 		}
 		catch(IOException ioe) {
-			ioe.getMessage();
+			logger.warn(ioe.getMessage());
 		}
 		
 		return "ReimbursementSubmit.jsp";
