@@ -21945,3 +21945,86 @@ PL/SQL: Statement ignored
 2018-05-17 20:19:15 INFO  LogThis:25 - CORSFilter HTTP URI: /EmployeeReimbursementSystem/index.jsp
 2018-05-17 20:19:15 INFO  LogThis:25 - CORSFilter HTTP URL: http://localhost:8080/EmployeeReimbursementSystem/index.jsp
 2018-05-17 20:19:15 INFO  LogThis:25 - CORSFilter HTTP Protocol: HTTP/1.1
+2018-05-17 20:26:27 INFO  LogThis:25 - CORSFilter HTTP Request: GET
+2018-05-17 20:26:27 INFO  LogThis:25 - CORSFilter HTTP URI: /EmployeeReimbursementSystem/index.jsp
+2018-05-17 20:26:27 INFO  LogThis:25 - CORSFilter HTTP URL: http://localhost:8080/EmployeeReimbursementSystem/index.jsp
+2018-05-17 20:26:27 INFO  LogThis:25 - CORSFilter HTTP Protocol: HTTP/1.1
+2018-05-17 20:30:24 INFO  LogThis:25 - CORSFilter HTTP Request: GET
+2018-05-17 20:30:24 INFO  LogThis:25 - CORSFilter HTTP URI: /EmployeeReimbursementSystem/index.jsp
+2018-05-17 20:30:24 INFO  LogThis:25 - CORSFilter HTTP URL: http://localhost:8080/EmployeeReimbursementSystem/index.jsp
+2018-05-17 20:30:24 INFO  LogThis:25 - CORSFilter HTTP Protocol: HTTP/1.1
+2018-05-17 20:30:27 INFO  LogThis:25 - CORSFilter HTTP Request: GET
+2018-05-17 20:30:27 INFO  LogThis:25 - CORSFilter HTTP URI: /EmployeeReimbursementSystem/login.jsp/
+2018-05-17 20:30:27 INFO  LogThis:25 - CORSFilter HTTP URL: http://localhost:8080/EmployeeReimbursementSystem/login.jsp/
+2018-05-17 20:30:27 INFO  LogThis:25 - CORSFilter HTTP Protocol: HTTP/1.1
+2018-05-17 20:31:27 INFO  LogThis:25 - CORSFilter HTTP Request: GET
+2018-05-17 20:31:27 INFO  LogThis:25 - CORSFilter HTTP URI: /EmployeeReimbursementSystem/login.jsp/
+2018-05-17 20:31:27 INFO  LogThis:25 - CORSFilter HTTP URL: http://localhost:8080/EmployeeReimbursementSystem/login.jsp/
+2018-05-17 20:31:27 INFO  LogThis:25 - CORSFilter HTTP Protocol: HTTP/1.1
+2018-05-17 20:31:28 INFO  LogThis:25 - CORSFilter HTTP Request: GET
+2018-05-17 20:31:28 INFO  LogThis:25 - CORSFilter HTTP URI: /EmployeeReimbursementSystem/login.jsp/
+2018-05-17 20:31:28 INFO  LogThis:25 - CORSFilter HTTP URL: http://localhost:8080/EmployeeReimbursementSystem/login.jsp/
+2018-05-17 20:31:28 INFO  LogThis:25 - CORSFilter HTTP Protocol: HTTP/1.1
+2018-05-17 20:31:35 INFO  LogThis:25 - CORSFilter HTTP Request: GET
+2018-05-17 20:31:35 INFO  LogThis:25 - CORSFilter HTTP URI: /EmployeeReimbursementSystem/
+2018-05-17 20:31:35 INFO  LogThis:25 - CORSFilter HTTP URL: http://localhost:8080/EmployeeReimbursementSystem/
+2018-05-17 20:31:35 INFO  LogThis:25 - CORSFilter HTTP Protocol: HTTP/1.1
+2018-05-17 20:32:12 INFO  LogThis:25 - CORSFilter HTTP Request: GET
+2018-05-17 20:32:12 INFO  LogThis:25 - CORSFilter HTTP URI: /EmployeeReimbursementSystem/index.jsp
+2018-05-17 20:32:12 INFO  LogThis:25 - CORSFilter HTTP URL: http://localhost:8080/EmployeeReimbursementSystem/index.jsp
+2018-05-17 20:32:12 INFO  LogThis:25 - CORSFilter HTTP Protocol: HTTP/1.1
+2018-05-17 20:32:16 INFO  LogThis:25 - CORSFilter HTTP Request: GET
+2018-05-17 20:32:16 INFO  LogThis:25 - CORSFilter HTTP URI: /EmployeeReimbursementSystem/
+2018-05-17 20:32:16 INFO  LogThis:25 - CORSFilter HTTP URL: http://localhost:8080/EmployeeReimbursementSystem/
+2018-05-17 20:32:16 INFO  LogThis:25 - CORSFilter HTTP Protocol: HTTP/1.1
+2018-05-17 20:33:26 INFO  LogThis:25 - CORSFilter HTTP Request: POST
+2018-05-17 20:33:26 INFO  LogThis:25 - CORSFilter HTTP URI: /EmployeeReimbursementSystem/login.do
+2018-05-17 20:33:26 INFO  LogThis:25 - CORSFilter HTTP URL: http://localhost:8080/EmployeeReimbursementSystem/login.do
+2018-05-17 20:33:26 INFO  LogThis:25 - CORSFilter HTTP Protocol: HTTP/1.1
+2018-05-17 20:33:26 INFO  LogThis:25 - MasterServlet doGet
+2018-05-17 20:33:26 INFO  LogThis:25 - MasterDispatcher process
+2018-05-17 20:33:26 INFO  LogThis:25 - MasterDispatcher login.do
+2018-05-17 20:33:29 INFO  LogThis:25 - Minerva McGonagall, username: tabbycat has logged in.
+2018-05-17 20:33:29 INFO  LogThis:25 - MasterServlet doGet
+2018-05-17 20:33:29 INFO  LogThis:25 - MasterDispatcher process
+2018-05-17 20:33:29 INFO  LogThis:25 - MasterDispatcher finManHome.do
+2018-05-17 20:33:29 INFO  LogThis:25 - CORSFilter HTTP Request: POST
+2018-05-17 20:33:29 INFO  LogThis:25 - CORSFilter HTTP Request: POST
+2018-05-17 20:33:29 INFO  LogThis:25 - CORSFilter HTTP Request: POST
+2018-05-17 20:33:29 INFO  LogThis:25 - CORSFilter HTTP URI: /EmployeeReimbursementSystem/getDenied.ajax
+2018-05-17 20:33:29 INFO  LogThis:25 - CORSFilter HTTP URI: /EmployeeReimbursementSystem/getPending.ajax
+2018-05-17 20:33:29 INFO  LogThis:25 - CORSFilter HTTP URL: http://localhost:8080/EmployeeReimbursementSystem/getDenied.ajax
+2018-05-17 20:33:29 INFO  LogThis:25 - CORSFilter HTTP URI: /EmployeeReimbursementSystem/getApproved.ajax
+2018-05-17 20:33:29 INFO  LogThis:25 - CORSFilter HTTP URL: http://localhost:8080/EmployeeReimbursementSystem/getApproved.ajax
+2018-05-17 20:33:29 INFO  LogThis:25 - CORSFilter HTTP Protocol: HTTP/1.1
+2018-05-17 20:33:29 INFO  LogThis:25 - CORSFilter HTTP Protocol: HTTP/1.1
+2018-05-17 20:33:29 INFO  LogThis:25 - CORSFilter HTTP URL: http://localhost:8080/EmployeeReimbursementSystem/getPending.ajax
+2018-05-17 20:33:29 INFO  LogThis:25 - CORSFilter HTTP Protocol: HTTP/1.1
+2018-05-17 20:33:32 INFO  LogThis:25 - CORSFilter HTTP Request: GET
+2018-05-17 20:33:32 INFO  LogThis:25 - CORSFilter HTTP URI: /EmployeeReimbursementSystem/pendingReimb.jsp
+2018-05-17 20:33:32 INFO  LogThis:25 - CORSFilter HTTP URL: http://localhost:8080/EmployeeReimbursementSystem/pendingReimb.jsp
+2018-05-17 20:33:32 INFO  LogThis:25 - CORSFilter HTTP Protocol: HTTP/1.1
+2018-05-17 20:33:32 INFO  LogThis:25 - CORSFilter HTTP Request: GET
+2018-05-17 20:33:32 INFO  LogThis:25 - CORSFilter HTTP URI: /EmployeeReimbursementSystem/pendingReimb.js
+2018-05-17 20:33:32 INFO  LogThis:25 - CORSFilter HTTP URL: http://localhost:8080/EmployeeReimbursementSystem/pendingReimb.js
+2018-05-17 20:33:32 INFO  LogThis:25 - CORSFilter HTTP Protocol: HTTP/1.1
+2018-05-17 20:33:32 INFO  LogThis:25 - CORSFilter HTTP Request: POST
+2018-05-17 20:33:32 INFO  LogThis:25 - CORSFilter HTTP URI: /EmployeeReimbursementSystem/getAllReimbs.ajax
+2018-05-17 20:33:32 INFO  LogThis:25 - CORSFilter HTTP URL: http://localhost:8080/EmployeeReimbursementSystem/getAllReimbs.ajax
+2018-05-17 20:33:32 INFO  LogThis:25 - CORSFilter HTTP Protocol: HTTP/1.1
+2018-05-17 20:33:46 INFO  LogThis:25 - CORSFilter HTTP Request: GET
+2018-05-17 20:33:46 INFO  LogThis:25 - CORSFilter HTTP URI: /EmployeeReimbursementSystem/finManHome.jsp
+2018-05-17 20:33:46 INFO  LogThis:25 - CORSFilter HTTP URL: http://localhost:8080/EmployeeReimbursementSystem/finManHome.jsp
+2018-05-17 20:33:46 INFO  LogThis:25 - CORSFilter HTTP Protocol: HTTP/1.1
+2018-05-17 20:33:47 INFO  LogThis:25 - CORSFilter HTTP Request: POST
+2018-05-17 20:33:47 INFO  LogThis:25 - CORSFilter HTTP URI: /EmployeeReimbursementSystem/getPending.ajax
+2018-05-17 20:33:47 INFO  LogThis:25 - CORSFilter HTTP URL: http://localhost:8080/EmployeeReimbursementSystem/getPending.ajax
+2018-05-17 20:33:47 INFO  LogThis:25 - CORSFilter HTTP Protocol: HTTP/1.1
+2018-05-17 20:33:47 INFO  LogThis:25 - CORSFilter HTTP Request: POST
+2018-05-17 20:33:47 INFO  LogThis:25 - CORSFilter HTTP Request: POST
+2018-05-17 20:33:47 INFO  LogThis:25 - CORSFilter HTTP URI: /EmployeeReimbursementSystem/getApproved.ajax
+2018-05-17 20:33:47 INFO  LogThis:25 - CORSFilter HTTP URL: http://localhost:8080/EmployeeReimbursementSystem/getApproved.ajax
+2018-05-17 20:33:47 INFO  LogThis:25 - CORSFilter HTTP Protocol: HTTP/1.1
+2018-05-17 20:33:47 INFO  LogThis:25 - CORSFilter HTTP URI: /EmployeeReimbursementSystem/getDenied.ajax
+2018-05-17 20:33:47 INFO  LogThis:25 - CORSFilter HTTP URL: http://localhost:8080/EmployeeReimbursementSystem/getDenied.ajax
+2018-05-17 20:33:47 INFO  LogThis:25 - CORSFilter HTTP Protocol: HTTP/1.1

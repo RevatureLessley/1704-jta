@@ -2,6 +2,9 @@
 <html>
 
 <head>
+		<meta charset="UTF-8">
+		<title>Not The Home Page</title>
+
 	<meta http-equiv="refresh" content="3; url=http://localhost:8080/EmployeeReimbursementSystem/" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
