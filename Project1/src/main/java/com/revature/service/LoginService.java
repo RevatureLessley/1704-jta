@@ -32,7 +32,7 @@ public class LoginService {
 				}else return "/employee.jsp";
 			}
 		}
-		return "/index.html";
+		return "/index.jsp";
 	}
 	
 	public static String logout(HttpServletRequest request, HttpServletResponse response) {
