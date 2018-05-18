@@ -62,12 +62,6 @@
 		</nav>
 	</div>
 
-    <!-- Breadcrumb -->
-    <div class="container">
-        <ol class="breadcrumb">
-
-        </ol>
-    </div>
 	
 	
       
@@ -118,8 +112,8 @@
 	  	<br>
 	    <li class="list-group-item">
 	      <h3 class="list-group-item-heading">AJAX</h3>
-	      <h4 class="list-group-item-text">Script 1</h4>
-	      <h4 class="list-group-item-text">Script 2</h4>
+	      <h4 class="list-group-item-text">Display of Data</h4>
+	      <h4 class="list-group-item-text">Formats Table Upon Webpage Loading</h4>
 	    </li>	
 	  	<br>
 	    <li class="list-group-item">
@@ -127,11 +121,7 @@
 	      <h4 class="list-group-item-text">Java Testing and Debugging</h4>
 	      <h4 class="list-group-item-text">Automated Logging</h4>
 	    </li>	    
-	  	<br>
-	    <li class="list-group-item">
-	      <h3 class="list-group-item-heading">Other</h3>
-	      <h4 class="list-group-item-text">Angular (?)</h4>
-	    </li>	    	    
+	  	<br>    	    
 	    </div>
 	</div>
 </div>

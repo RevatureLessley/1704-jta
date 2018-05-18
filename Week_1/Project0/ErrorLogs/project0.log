@@ -34526,3 +34526,10 @@ ORA-06512: at line 1
 2018-05-14 23:20:47 WARN  LogHere:27 - SQLE State: 99999
 2018-05-14 23:20:47 WARN  LogHere:27 - Error code: 17003
 2018-05-16 05:53:12 WARN  LogHere:27 - 
+2018-05-17 12:20:46 WARN  LogHere:27 - IO Error: The Network Adapter could not establish the connection
+2018-05-17 12:20:53 WARN  LogHere:27 - IO Error: The Network Adapter could not establish the connection
+2018-05-17 12:22:28 WARN  LogHere:27 - IO Error: The Network Adapter could not establish the connection
+2018-05-17 12:25:30 WARN  LogHere:27 - 
+2018-05-17 13:34:12 WARN  LogHere:27 - 
+2018-05-17 13:34:48 WARN  LogHere:27 - 
+2018-05-17 21:45:09 WARN  LogHere:27 - 

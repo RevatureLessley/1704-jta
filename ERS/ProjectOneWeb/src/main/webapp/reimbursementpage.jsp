@@ -77,13 +77,6 @@
 
 
 
-	<!-- Breadcrumb -->
-	<div class="container">
-		<ol class="breadcrumb">
-
-		</ol>
-	</div>
-
 	
 	
 	<div class="container well">
@@ -163,7 +156,8 @@
 							<td><%=r.getTimemade().toGMTString()%></td>
 							<td> </td>
 							<td><%if(r.getImagestring() != null){ %>
-								<img id="myImg" height="42" width="42" src="data:image/png;base64,<%=r.getImagestring() %>"> <% } %>
+								<img id="myImg" height="42" width="42" src="data:image/png;base64,<%=r.getImagestring() %>"> 
+								<% } %>
 							</td>
 						</tr>
 						<% } else { %>
@@ -178,7 +172,8 @@
 							<td><%=r.getTimemade().toGMTString()%></td>
 							<td><%=r.getTimeapproved().toGMTString()%></td>
 							<td><%if(r.getImagestring() != null){ %>
-								<img id="myImg" height="42" width="42" src="data:image/png;base64,<%=r.getImagestring() %>"> <% } %>
+								<img id="myImg" height="42" width="42" src="data:image/png;base64,<%=r.getImagestring() %>"> 
+								<% } %>
 							</td>						
 						</tr>
 						<% } %>
@@ -255,6 +250,7 @@
 		
 			<div class="col-md-12">
 				<h2>Please note, if you made a request, another manager is required to approve it.</h2>
+				<h2>You can only approve or deny one request at a time!</h2>
 				<h3>Here is a list of pending reimbursements:</h3>
   				<input class="form-control" id="pending_Filter2" type="text" placeholder="Filter list here">
 				<form action="/ProjectOneWeb/ReimbursementApprovalServlet" method="POST">
@@ -283,10 +279,11 @@
 							<td><%if(r.getImagestring() != null){ %>
 								<img id="myImg" height="42" width="42" src="data:image/png;base64,<%=r.getImagestring() %>"> <% } %>
 							</td>		
-						<% if(r.getRequestor_id() != employee.getId()){ %>
-								<td><input type="button" name="approval" value=<%="approved" + r.getId() + r.getCategory()%>>
+						<% if(r.getRequestor_id() != employee.getId()){ 
+						%>
+								<td><input type="radio" id="ap" name="approval" value=<%="approved" + r.getId() + r.getCategory()%>>
 								<label for="Approve">Approve</label></td>
-								<td><input type="button" name="approval" value=<%="rejected" + r.getId() + r.getCategory()%>>
+								<td><input type="radio" id="de" name="approval" value=<%="rejected" + r.getId() + r.getCategory()%>>
 								<label for="Reject">Reject</label></td>
 								<td><input type="text" name="reasongiven" class="form-control" placeholder="Explain your reasoning here..">
 						<% } %>
@@ -304,7 +301,19 @@
 		</div>
 	</div>
 
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+	window.onload = function() {
+		document.addEventListener("click", ifchecked());
+	}
+	function ifchecked() {
+	    let checked = document.getElementById("ap").checked;
+	    if(checked){
+	        document.getElementById("de").checked = false;
+	    }
+	}
+	
+	</script>
 	<script>
 		$(document).ready(function(){
 		  $("#reimbursement_Filter").on("keyup", function() {
@@ -315,7 +324,7 @@
 		  });
 		});
 	</script>
-	<script>
+		<script>
 		$(document).ready(function(){
 		  $("#pending_Filter").on("keyup", function() {
 		    var value = $(this).val().toLowerCase();
@@ -325,7 +334,7 @@
 		  });
 		});
 	</script>
-	<script>
+		<script>
 		$(document).ready(function(){
 		  $("#reimbursement_Filter2").on("keyup", function() {
 		    var value = $(this).val().toLowerCase();
@@ -335,7 +344,7 @@
 		  });
 		});
 	</script>
-	<script>
+		<script>
 		$(document).ready(function(){
 		  $("#pending_Filter2").on("keyup", function() {
 		    var value = $(this).val().toLowerCase();
@@ -351,7 +360,6 @@
 	<script src="./js/hidereimbursementbutton.js"></script>
 	<script src="./js/hidependingbutton.js"></script>
 	<script src="./js/filesizelimit.js"></script>
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 

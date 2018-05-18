@@ -70,13 +70,6 @@
 	</div>
 
 
-
-	<!-- Breadcrumb -->
-	<div class="container">
-		<ol class="breadcrumb">
-
-		</ol>
-	</div>
 	
 				<% if(employee.isManagerstatus()){ %>
 				

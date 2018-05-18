@@ -26,6 +26,16 @@
 	try{
 		HttpServletResponse httpResponse = (HttpServletResponse)response;
 
+		Employee employee = (Employee) request.getSession().getAttribute("authorizedUser");
+		
+		if(employee != null){
+			loggedin = true;
+			if(employee.isManagerstatus()){
+				managerstatus = true;
+			}
+		}
+		
+		
 		httpResponse.setHeader("Cache-Control","no-cache, no-store, must-revalidate"); 
 		response.addHeader("Cache-Control", "post-check=0, pre-check=0");
 		httpResponse.setHeader("Pragma","no-cache"); 
@@ -36,14 +46,9 @@
 		 }
 
 
-		Employee employee = (Employee) request.getSession().getAttribute("authorizedUser");
-		if(employee != null){
-			loggedin = true;
-			if(employee.isManagerstatus()){
-				managerstatus = true;
-			}
-		}
+
 	} catch(ClassCastException cce){
+		request.getSession().setAttribute("authorizedUser", "");
 		cce.getMessage();
 	}
 	%>

@@ -33,12 +33,6 @@
 		</nav>
 	</div>
 
-	<!-- Breadcrumb -->
-	<div class="container">
-		<ol class="breadcrumb">
-
-		</ol>
-	</div>
 
 	<div class="container">
 		<div class="well col-md-6 col-md-offset-3">
