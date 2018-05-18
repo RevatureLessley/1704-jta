@@ -66,6 +66,12 @@
 		<description></description>
 		<servlet-class>servlet.JacksonEmployeeReimbursementServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>LogoutServlet</servlet-name>
+		<display-name>LogoutServlet</display-name>
+		<description></description>
+		<servlet-class>servlet.LogoutServlet</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>Front</servlet-name>
 		<url-pattern>*.do</url-pattern>
@@ -101,6 +107,10 @@
 	<servlet-mapping>
 		<servlet-name>JacksonEmployeeReimbursementServlet</servlet-name>
 		<url-pattern>/JacksonEmployeeReimbursementServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LogoutServlet</servlet-name>
+		<url-pattern>/LogoutServlet</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>

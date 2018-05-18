@@ -18,10 +18,12 @@ let ajax = () => {
 		if(xhr.readyState === 4 && xhr.status === 200){
 			let reimbursements = JSON.parse(xhr.responseText)
 			for(let r of reimbursements){
+				let image = `<img src='data:image/png;base64,${r.image}'/>`
+				
 				let row = '<tr>'
 					row += `<td>${r.reimbursementid}</td>`
 					row += `<td>${r.status}</td>`
-					row += `<td>${r.image}</td>`
+					row += `<td>${image}</td>`
 					row += `<td>${r.category}</td>`
 					row += '</tr>'
 				$('table > tbody:last-child').append(row)
@@ -43,10 +45,11 @@ let pending = () =>{
 				if(r.status !== 'pending')
 					continue
 				
+				let image = `<img src='data:image/png;base64,${r.image}'/>`
 				let row = '<tr>'
 					row += `<td>${r.reimbursementid}</td>`
 					row += `<td>${r.status}</td>`
-					row += `<td>${r.image}</td>`
+					row += `<td>${image}</td>`
 					row += `<td>${r.category}</td>`
 					row += '</tr>'
 				$('table > tbody:last-child').append(row)
@@ -68,10 +71,11 @@ let resolved = () => {
 				if(r.status === 'pending')
 					continue
 				
+				let image = `<img src='data:image/png;base64,${r.image}'/>`
 				let row = '<tr>'
 					row += `<td>${r.reimbursementid}</td>`
 					row += `<td>${r.status}</td>`
-					row += `<td>${r.image}</td>`
+					row += `<td>${image}</td>`
 					row += `<td>${r.category}</td>`
 					row += '</tr>'
 				$('table > tbody:last-child').append(row)

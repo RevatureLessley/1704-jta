@@ -13,24 +13,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Employee: reimbursement</title>
+<link rel='stylesheet' type='text/css' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css'>
+<link rel='stylesheet' type='text/css' href='css/readreimbursement.css'>
 </head>
 <body>
-<div class='container'>
+<div id='container' class='container'>
 	<h2><%=employee.getUsername()%>	read reimbursement </h2>
-	<a href='employee-home.do'>Home</a>
 	<div>
-		<button id='pending'>pending</button>
-		<button id='resolved'>resolved</button>
-		<button id='all'>all</button>
-	
+		<a class='btn btn-primary' href='employee-home.do'>Home</a>
+		<button class='btn btn-secondary' id='pending'>pending</button>
+		<button class='btn btn-secondary' id='resolved'>resolved</button>
+		<button class='btn btn-secondary' id='all'>all</button>
 	</div>
-	<table>
-		<thead>
+	<table class='table'>
+		<thead class='thead'>
 			<tr>
-				<th>id</th>
-				<th>status</th>
-				<th>image</th>
-				<th>category</th>
+				<th scope='col'>id</th>
+				<th scope='col'>status</th>
+				<th scope='col'>image</th>
+				<th scope='col'>category</th>
 			</tr>
 		</thead>
 		<tbody>				

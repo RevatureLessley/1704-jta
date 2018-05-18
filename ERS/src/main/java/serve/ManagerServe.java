@@ -22,6 +22,11 @@ public class ManagerServe {
 	}
 	
 	public static String logout(HttpServletRequest request) {
+		request.getSession().invalidate();
 		return "index.do";
+	}
+
+	public static String createReimbursement(HttpServletRequest request) {
+		return "managercreatereimbursement.jsp";
 	}
 }

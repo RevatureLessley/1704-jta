@@ -1,0 +1,50 @@
+@charset "ISO-8859-1";
+
+body{
+	display:flex;
+	flex-flow: column nowrap;
+	
+	justify-content: center;
+	align-items: center;
+
+}
+
+#container{
+	display:flex;
+	flex-flow: column nowrap;
+	
+	height:500px;
+	
+	justify-content:center;
+	align-items: center;
+
+}
+
+#form{
+	display:flex;
+	flex-flow: column nowrap;
+}
+
+input, a#button{
+	width:250px;
+	margin:10px;
+	padding:10px;
+}
+
+/* Y axis justify-content: start, center, space-between, space-around, space-evenly */ 
+/* X axis align-items: flex-start, flex-end, center, baseline, stretch */
+
+input[type='radio']{
+	align-items: flex-start;
+	width:100px;
+	padding-left:0px;
+	margin-left:0px;
+}
+
+#button{
+	width:200px;
+}
+
+.radio{
+	width:200px;
+}

@@ -19,13 +19,7 @@ public class EmployeeServlet extends HttpServlet {
         super();
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getSession().invalidate();
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {			
 		String username = request.getParameter("username");
 		//String password = request.getParameter("password");
 		

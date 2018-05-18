@@ -6,14 +6,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel='stylesheet' type='text/css' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css'>
+<link rel='stylesheet' type='text/css' href='css/home.css'>
 <title>Manager: home</title>
 </head>
 <body>
-<div class='container'>
-	<h2>Manager home</h2>
-	<a href='index.do'>Logout</a>
-	<a href='manager-update-reimbursement.do'>Review reimbursements</a>
-	<a href='manager-read-employee.do'>View employees</a>
+<div id='container' class='container'>
+	<h2><%= manager.getUsername() %> home</h2>
+	<a class='btn btn-dark button' href='index.do'>Logout</a>
+	<a class='btn btn-primary button' href='manager-create-reimbursement.do'>Create reimbursement</a>
+	<a class='btn btn-primary button' href='manager-update-reimbursement.do'>Review reimbursements</a>
+	<a class='btn btn-primary button' href='manager-read-employee.do'>View employees</a>
 </div>
 
 </body>

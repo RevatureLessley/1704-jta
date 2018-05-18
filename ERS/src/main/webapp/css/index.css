@@ -1,0 +1,31 @@
+@charset "ISO-8859-1";
+
+body{
+	display:flex;
+	flex-flow: column nowrap;
+	
+	justify-content: center;
+	align-items: center;
+
+}
+#container{
+	display:flex;
+	flex-flow: column nowrap;
+	
+	height:400px;
+	
+	justify-content:center;
+	align-items: center;
+
+}
+
+#buttons{
+	display:flex;
+	flex-flow: column nowrap;
+	justify-content:center;
+	align-items: center;
+}
+
+.button{
+	margin:10px;	
+}

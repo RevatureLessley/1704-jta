@@ -6,17 +6,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel='stylesheet' type='text/css' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css'>
+<link rel='stylesheet' type='text/css' href='css/login.css'>
 <title>Manager: login</title>
 </head>
 <body>
-<div class='container'>
+<div id='container' class='container'>
 	<h2>Manager login</h2>
-	<div class='form-group'>
-		<form action='ManagerServlet' method='post'>
+	<div id='forms' class='form-group'>
+		<form id='form' action='ManagerServlet' method='post'>
 			<input type='text' name='username' placeholder='Enter username'>
 			<input type='password' name='password' placeholder='Enter password'>
-			<input type='submit' value='submit'>
-			<%=(String)request.getAttribute("message")%>
+			<input class='btn btn-dark' type='submit' value='submit'>
+			<p id='input'><%=(String)request.getAttribute("message") %></p>
 		</form>
 	</div>	
 </div>

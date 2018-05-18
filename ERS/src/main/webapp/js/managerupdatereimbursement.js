@@ -20,7 +20,7 @@ let buttons = () => {	let xhr = new XMLHttpRequest()
 		if(xhr.readyState === 4 && xhr.status === 200){
 			let employees = JSON.parse(xhr.responseText)
 			for(let e of employees){
-				let button = `<button class='employee' id='${e.username}'>${e.username}</button>`
+				let button = `<button class='btn btn-secondary employee' id='${e.username}'>${e.username}</button>`
 				$('#buttons').append(button)
 				$('.employee').click(employee)
 			}
@@ -42,9 +42,9 @@ let ajax = (user) => {
 				
 				switch(r.status){
 				case 'pending':
-					approve = `<td><a href='ManagerReimbursementServlet?
+					approve = `<td><a class='btn btn-success' href='ManagerReimbursementServlet?
 						status=approved&id=${r.reimbursementid}'>approve</a></td>`
-					reject = `<td><a href='ManagerReimbursementServlet?
+					reject = `<td><a class='btn btn-danger' href='ManagerReimbursementServlet?
 						status=rejected&id=${r.reimbursementid}'>reject</a></td>`
 					break
 				case 'approved':
@@ -57,12 +57,13 @@ let ajax = (user) => {
 					reject = '<td></td>'
 				}
 				
+				let image = `<img src='data:image/png;base64,${r.image}'/>`
 				let row = `<tr>`
 					row +=`<td>${r.reimbursementid}</td>`
 					row += `<td>${r.employee}</td>`
 					row += `<td>${r.manager}</td>`
 					row += `<td>${r.category}</td>`
-					row += `<td>${r.image}</td>`
+					row += `<td>${image}</td>`
 					row += `<td>${r.status}</td>`
 					row += `${approve}`
 					row += `${reject}`
