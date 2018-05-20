@@ -2,10 +2,6 @@ package com.reavature.application;
 
 import java.util.List;
 
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-
-import com.revature.hibernate.entity.Address;
 import com.revature.hibernate.entity.Pokemon;
 import com.revature.hibernate.entity.Trainer;
 import com.revature.hibernate.services.TrainerService;
@@ -68,7 +64,7 @@ public class Application {
 //		}
 //	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		
 //		TrainerService.insertTrainer(new Trainer("Brock"), new Address("1234 Rocky Road", "Pewter City"));
 		
@@ -82,8 +78,8 @@ public class Application {
 //		TrainerService.addPokemon("Brock", new Pokemon("Golem"));
 //		TrainerService.addPokemon("Lance", new Pokemon("Onix"));
 
-		Trainer trainer = TrainerService.getTrainer("Lance");
-		TrainerService.deleteTrainer(trainer);
+//		Trainer trainer = TrainerService.getTrainer("Lance");
+//		TrainerService.deleteTrainer(trainer);
 
 
 //		Session session = null;
@@ -102,6 +98,22 @@ public class Application {
 //			HibernateUtil.shutdownSession(session);
 //		}
 		
+		
+		List<Trainer> trainers = TrainerService.getAllTrainers();
+		
+		
+		System.out.println("sleeping... zzzzzzz");
+		Thread.sleep(10000);
+		
+		
+		
+		
+		for (Trainer t : trainers) {
+			System.out.println(t);
+			for (Pokemon p : t.getPokemon()) {
+				System.out.println(p);
+			}
+		}
 		
 		
 		HibernateUtil.shutdown();

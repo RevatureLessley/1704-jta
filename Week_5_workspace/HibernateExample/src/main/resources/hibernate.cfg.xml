@@ -6,8 +6,17 @@
 		<property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
 		<property name="hibernate.hbm2ddl.auto">update</property>
 
-		<!-- One optional propety I want to provide -->
+		<!-- One optional property I want to provide -->
 		<property name="hibernate.show_sql">false</property>
+		
+		
+		<property name="hibernate.cache.use_second_level_cache">true</property>
+
+
+		<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+		
+		
+		<property name="net.sf.ehcache.configurationResourceName">/ehcache.xml</property>
 
 		<!-- For hbm.xml files, use the attribute 'resource' -->
 		<mapping resource="com/revature/hibernate/entity/Employee.hbm.xml"></mapping>

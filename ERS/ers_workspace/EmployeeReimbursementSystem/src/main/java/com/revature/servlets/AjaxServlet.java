@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.logging.LogThis;
 
 public class AjaxServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -17,6 +18,23 @@ public class AjaxServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+			response.setContentType("text/html");
+			if (request.getSession().getAttribute("currentEmployee") == null) {
+				response.setContentType("text/html");
+
+				LogThis.info("MasterDispatcher if currentEmployee == null");
+				response.sendRedirect("404.jsp");
+
+				return;
+			}
+		} catch (Exception e) {
+			response.sendRedirect("404.jsp");
+
+			return;
+		}
+
+		
 		response.setContentType("application/json");
 		
 		// Get a reference to the ObjectMapper

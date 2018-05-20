@@ -28,6 +28,7 @@ public class CorsFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		// Cast the ServletRequest to an HttpServletRequest in order to get the HTTP Method attached with the request
+
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		
 		LogThis.info("CORSFilter HTTP Request: " + httpRequest.getMethod());
@@ -56,6 +57,13 @@ public class CorsFilter implements Filter {
 		
 		// Cast the ServletResponse to an HttpServletResponse to set a Status Code
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
+		
+//		if (httpRequest.getSession().getAttribute("currentEmployee") == null) {
+//			httpResponse.sendRedirect("/main.do");
+//			return;
+////			return "main.do";
+//		}
+
 		
 		// For the HTTP OPTIONS method reply with ACCEPTED status code - per the CORS handshake
 		if (httpRequest.getMethod().equals("OPTIONS")) {

@@ -13,8 +13,12 @@ import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 @Entity
 @Table(name = "pokemon")
+@Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
 public class Pokemon {
 
 	@Id

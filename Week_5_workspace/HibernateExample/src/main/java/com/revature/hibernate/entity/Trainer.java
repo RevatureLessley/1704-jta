@@ -17,8 +17,12 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 @Entity
 @Table(name = "trainer")
+@Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
 public class Trainer {
 
 	@Id
@@ -34,7 +38,7 @@ public class Trainer {
 	@JoinColumn(name = "address_id")
 	private Address address;
 
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinTable(name = "trainer_pokemon", joinColumns = { @JoinColumn(name = "trainer_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "pokemon_id") })
 	List<Pokemon> pokemon = new ArrayList<>();

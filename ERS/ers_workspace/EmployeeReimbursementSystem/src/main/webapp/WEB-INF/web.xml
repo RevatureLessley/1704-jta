@@ -40,6 +40,12 @@
 		<description></description>
 		<servlet-class>com.revature.servlets.LogoutServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>ErrorHandler</servlet-name>
+		<display-name>ErrorHandler</display-name>
+		<description></description>
+		<servlet-class>com.revature.servlets.ErrorHandler</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>MasterServlet</servlet-name>
 		<url-pattern>*.do</url-pattern>
@@ -56,10 +62,38 @@
 		<servlet-name>LogoutServlet</servlet-name>
 		<url-pattern>/Logout</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ErrorHandler</servlet-name>
+		<url-pattern>/ErrorHandler</url-pattern>
+	</servlet-mapping>
+
+
 
 	<welcome-file-list>
 		<welcome-file>login.jsp</welcome-file>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
+	
+	 	<error-page>
+		<exception-type>
+			javax.servlet.ServletException
+		</exception-type>
+		<location>/ErrorHandler</location>
+	</error-page>
+
+	<error-page>
+		<exception-type>java.io.IOException</exception-type>
+		<location>/ErrorHandler</location>
+	</error-page>
+	
+	<error-page>
+		<exception-type>java.lang.Exception</exception-type>
+		<location>/ErrorHandler</location>
+	</error-page>
+<!-- 	<error-page>
+		<exception-type>java.lang.NullPointerException</exception-type>
+		<location>/ErrorHandler</location>
+	</error-page>
+ -->	
 
 </web-app>
