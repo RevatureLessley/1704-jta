@@ -26,4 +26,7 @@ public class EmployeeService {
 	public static boolean deleteEmployee(String inUsername) {
 		return dao.deleteEmployee(inUsername);
 	}
+	public static String hash(String inUsername, String inPassword) {
+		return dao.hash(inUsername, inPassword);
+	}
 }

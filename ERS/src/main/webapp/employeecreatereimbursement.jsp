@@ -2,7 +2,6 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page import="model.Employee" %>
 <% 	Employee employee = (Employee) request.getSession().getAttribute("employee"); %>
-<%  if(employee == null) response.sendRedirect("404.jsp"); %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -17,6 +16,7 @@
 <body>
 <div id='container' class='container'>
 	<h2><%= employee.getUsername() %> create reimbursement</h2>
+	<h5 class='text-info'>Category will default to "other"; Image will default to "no image".</h5>
 	
 	<form id='form' action='EmployeeReimbursementServlet' enctype='multipart/form-data' method='post'>
 		<a id='button' class='btn btn-primary' href='employee-home.do'>Home</a>

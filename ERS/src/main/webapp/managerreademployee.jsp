@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page import="model.Manager" %>
 <% Manager manager = (Manager) request.getSession().getAttribute("manager"); %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,9 +13,9 @@
 </head>
 <body>
 <div id='container' class='container'>
-	<h2>Manager view employees</h2>
-	<a class='btn btn-primary' href='manager-home.do'>Home</a>
-	<table class='table'>
+	<h2><%= manager.getUsername() %> view employees</h2>
+	<a id='button' class='btn btn-primary' href='manager-home.do'>Home</a>
+	<table id='employee' class='table'>
 		<thead class='thead'>
 			<tr scope='col'>
 				<th>id</th>

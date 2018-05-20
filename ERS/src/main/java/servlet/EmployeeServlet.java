@@ -20,20 +20,27 @@ public class EmployeeServlet extends HttpServlet {
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {			
-		String username = request.getParameter("username");
-		//String password = request.getParameter("password");
+		String username = request.getParameter("username");		
+		String password = request.getParameter("password");
+		String hash = EmployeeService.hash(username, password);
 		
 		Employee employee = EmployeeService.readEmployee(username);
 		Information information = InformationService.readInformation(username);
 		
-		if(employee != null) {
+		try {
+			password = employee.getPassword();
+		} catch(NullPointerException e) {
+			password = "";
+		}
+		
+		if(password.equals(hash) &&
+				employee != null) {
 			request.getSession().setAttribute("employee", employee);
-			request.getSession().setAttribute("information",information);
-			request.getRequestDispatcher("employee-home.do").forward(request, response);
+			request.getSession().setAttribute("information", information);
+			request.getRequestDispatcher("employee-home.do").forward(request, response);				
 		} else {
-			request.setAttribute("message", "user not found");
-			request.getRequestDispatcher("employeelogin.jsp").forward(request, response);
+			request.setAttribute("message", "bad login");
+			request.getRequestDispatcher("employee-login.do").forward(request,response);
 		}
 	}
-
 }

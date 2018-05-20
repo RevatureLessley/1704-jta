@@ -4,10 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>404</title>
+<link rel='stylesheet' type='text/css' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css'>
+<link rel='stylesheet' type='text/css' href='css/index.css'>
+<title>ERS: 404</title>
 </head>
 <body>
-<h1>404... sorry :(</h1>
-<a href='index.do'>Index</a>
+<div id='container' class='container'>
+	<h1>404... sorry :(</h1>
+	<a class='btn btn-danger' href='index.do'>Index</a>
+</div>
 </body>
 </html>

@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 
 import org.apache.log4j.Logger;
 
@@ -84,8 +85,20 @@ public class ManagerDaoImpl implements ManagerDao{
 	}
 
 	@Override
-	public boolean authenticateManager(String inUsername, String inPassword) {
-		// TODO Auto-generated method stub
-		return true;
+	public String hash(String inUsername, String inPassword) {
+		String sql = "SELECT hash(?,?) AS hash FROM dual";
+		try(Connection c = ConnectionUtil.connect(this.logger);
+				PreparedStatement s = c.prepareStatement(sql);){
+			s.setString(1, inUsername);
+			s.setString(2, inPassword);
+			ResultSet r = s.executeQuery();
+			if(r.next())
+				return r.getString("hash");
+		} catch(SQLException e) {
+			logger.error(e.getSQLState());
+			logger.error(e.getErrorCode());
+			logger.error(e.getMessage());
+		}
+		return "";
 	}
 }

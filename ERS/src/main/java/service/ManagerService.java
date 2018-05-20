@@ -18,4 +18,7 @@ public class ManagerService {
 	public static boolean deleteManager(String inUsername) {
 		return dao.deleteManager(inUsername);
 	}
+	public static String hash(String inUsername, String inPassword) {
+		return dao.hash(inUsername, inPassword);
+	}
 }

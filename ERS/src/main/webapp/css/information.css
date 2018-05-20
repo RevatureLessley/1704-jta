@@ -38,4 +38,9 @@ input{
 p{
 	margin-bottom:0px;
 	padding-bottom:0px;
+	margin-left:10px;
+}
+
+#employee{
+	width:200px;
 }

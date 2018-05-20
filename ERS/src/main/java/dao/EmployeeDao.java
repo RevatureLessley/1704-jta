@@ -10,5 +10,5 @@ public interface EmployeeDao {
 	List<Employee> readEmployees();
 	boolean updateEmployee(String inManagerUsername, String inUsername, String inPassword);
 	boolean deleteEmployee(String inUsername);
-	boolean authenticateEmployee(String inUsername, String inPassword);
+	String hash(String inUsername, String inPassword);
 }

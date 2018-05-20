@@ -25,6 +25,10 @@ body{
 	flex-flow: column nowrap;
 }
 
-input, #input{
+input{
 	margin:10px;
+}
+
+p {
+	padding-left:10px;
 }

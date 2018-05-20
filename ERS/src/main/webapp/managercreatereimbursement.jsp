@@ -1,12 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="model.Manager" %>
-<% 
-	Manager manager = (Manager) request.getSession().getAttribute("manager");
-	if(manager == null){
-		request.setAttribute("message", "lost session; relogin");
-		request.getRequestDispatcher("manager-login.do").forward(request, response);
-	}
-%>
+<% 	Manager manager = (Manager) request.getSession().getAttribute("manager");%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -20,6 +15,7 @@
 <body>
 <div id='container' class='container'>	
 	<h2><%= manager.getUsername() %> create reimbursement</h2>
+	<h5 class='text-info'>Category default to "other"; Image default to "no image".</h5>
 	<form id='form' action='ManagerReimbursementServlet' enctype='multipart/form-data' method='post'>
 		<a id='button' class='btn btn-primary' href='manager-home.do'>Home</a>
 		<div class='radio'>

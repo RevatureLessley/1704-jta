@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page import="model.Manager" %>
 <% Manager manager = (Manager) request.getSession().getAttribute("manager"); %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,7 +19,7 @@
 			<input type='text' name='username' placeholder='Enter username'>
 			<input type='password' name='password' placeholder='Enter password'>
 			<input class='btn btn-dark' type='submit' value='submit'>
-			<p id='input'><%=(String)request.getAttribute("message") %></p>
+			<p class='text-danger' id='input'><%=(String)request.getAttribute("message") %></p>
 		</form>
 	</div>	
 </div>
