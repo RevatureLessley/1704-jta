@@ -22,6 +22,8 @@ public class MasterDispatcher {
 			return InfoService.update(request, response);
 		case "/Test/submitReimbursement.do":
 			return  ReimbursementService.submitReimbursement(request, response);
+		case "/Test/resolve.do":
+			return ReimbursementService.resolve(request, response);
 		default:
 			return "404.jsp";
 		}

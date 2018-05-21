@@ -7,6 +7,8 @@ public class Reimbursement implements Serializable{
 	private static final long serialVersionUID = 3082336176827941428L;
 
 	private int reimbursementId;
+	private String firstName;
+	private String lastName;
 	private int requestorId;
 	private int approverId;
 	private String category;
@@ -31,6 +33,21 @@ public class Reimbursement implements Serializable{
 	}
 	
 	
+
+	public Reimbursement(int reimbursementId, String firstName, String lastName, int requestorId, int approverId,
+			String category, String status, String submissionDate, String resolutionDate, double amount) {
+		super();
+		this.reimbursementId = reimbursementId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.requestorId = requestorId;
+		this.approverId = approverId;
+		this.category = category;
+		this.status = status;
+		this.submissionDate = submissionDate;
+		this.resolutionDate = resolutionDate;
+		this.amount = amount;
+	}
 
 	public Reimbursement(int requestorId, String category, double amount) {
 		super();
@@ -103,12 +120,36 @@ public class Reimbursement implements Serializable{
 		this.amount = amount;
 	}
 	
+	
+	
+	
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		long temp;
+		temp = Double.doubleToLongBits(amount);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + approverId;
 		result = prime * result + ((category == null) ? 0 : category.hashCode());
+		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
+		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + reimbursementId;
 		result = prime * result + requestorId;
 		result = prime * result + ((resolutionDate == null) ? 0 : resolutionDate.hashCode());
@@ -126,12 +167,24 @@ public class Reimbursement implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Reimbursement other = (Reimbursement) obj;
+		if (Double.doubleToLongBits(amount) != Double.doubleToLongBits(other.amount))
+			return false;
 		if (approverId != other.approverId)
 			return false;
 		if (category == null) {
 			if (other.category != null)
 				return false;
 		} else if (!category.equals(other.category))
+			return false;
+		if (firstName == null) {
+			if (other.firstName != null)
+				return false;
+		} else if (!firstName.equals(other.firstName))
+			return false;
+		if (lastName == null) {
+			if (other.lastName != null)
+				return false;
+		} else if (!lastName.equals(other.lastName))
 			return false;
 		if (reimbursementId != other.reimbursementId)
 			return false;

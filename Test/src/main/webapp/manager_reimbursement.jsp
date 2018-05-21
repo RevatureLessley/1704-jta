@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Employee Reimbursement</title>
+    <title>Manager Reimbursement</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
     integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <style>
@@ -24,9 +24,9 @@
                 <a href="./index.html" class="navbar-brand">ECorp</a>
             </div>
             <ul class="navbar-nav nav col-md-8">
-            	<li><a href="employee_page.jsp">My Information</a></li>
-                <li><a href="employee_update.jsp">Update Information</a></li>
-                <li><a href="employee_reimbursement.jsp">Employee Reimbursement</a></li>
+            	  <li><a href="manager_page.jsp">View Reimbursements</a></li>
+                  <li><a href="view_employees.jsp">View Employees</a></li>
+                  <li><a href="manager_reimbursement.jsp">My Reimbursements</a></li>
             </ul>
             <ul class="navbar-nav nav navbar-right">
               <li> <a href="logout.do">Log Out <span class ="glyphicon glyphicon-log-out"></span></a></li>
@@ -85,4 +85,3 @@
 <script src="./employee_reimbursement.js"></script>
 </body>
 </html>
-

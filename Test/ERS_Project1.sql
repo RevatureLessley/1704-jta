@@ -152,9 +152,19 @@ VALUES ('Employee', 'Carrie', 'password');
 INSERT INTO info (employeeId, firstName, lastName, DOB, salary)
 VALUES (503, 'Carrie', 'Fisher', '3/36/1978', 48000);
 
+INSERT INTO employee (position, username, password)
+VALUES ('Financial Manager', 'Dan', 'password');
+
+INSERT INTO info (employeeId, firstName, lastName, DOB, salary)
+VALUES (504, 'Dan', 'Collins', '6/20/1979', 70000);
+
 select * from employee;
 select * from info;
+select * from reimbursement;
+
 
 commit;
 SELECT e.employeeId, position, username, password, firstName, lastName, DOB, salary  FROM employee e JOIN info i ON e.employeeId = i.employeeId;
+SELECT * FROM employee e JOIN info i ON e.employeeId = i.employeeId;
+SELECT reimbursementId, firstName, lastName, requestorId, approverId, category, status, submissionDate, resolutionDate, amount FROM info i JOIN reimbursement r ON i.employeeId = r.requestorId;
    

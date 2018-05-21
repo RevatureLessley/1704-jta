@@ -32,11 +32,12 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	public List<Employee> getAllEmployees() {
 		List<Employee> employees = new ArrayList<>();
 		try (Connection conn = ConnectionUtil.getConnection()) {
-			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM employee");
+			PreparedStatement stmt = conn.prepareStatement("SELECT e.employeeId, position, username, password, firstName, lastName, DOB, salary  FROM employee e JOIN info i ON e.employeeId = i.employeeId");
+			
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				Employee employee = new Employee(rs.getInt("employeeId"), rs.getString("position"),
-						rs.getString("username"), rs.getString("password"));
+				Employee employee = new Employee(rs.getInt("employeeId"), rs.getString("position"), rs.getString("username"),
+						rs.getString("password"), rs.getString("firstName"), rs.getString("lastname"), rs.getString("DOB"), rs.getInt("salary"));
 				employees.add(employee);
 			}
 			return employees;

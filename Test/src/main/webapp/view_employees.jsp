@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<html>
 <head>
   <meta charset="utf-8">
   <title>View Employees</title>
@@ -16,12 +16,13 @@
   <!--The navbar-->
   <div class="container">
       <nav class="navbar navbar-inverse">
-          <div class="navbar-header col-md-4">
+          <div class="navbar-header col-md-2">
               <a href="./index.html" class="navbar-brand">ECorp</a>
           </div>
-          <ul class="navbar-nav nav col-md-4">
-              <li class="active"><a href="view_employees.jsp">View Employees</a></li>
-              <li><a href="employee_reimbursement.jsp">Employee Reimbursement</a></li>
+          <ul class="navbar-nav nav col-md-8">
+          	  <li><a href="manager_page.jsp">View Reimbursements</a></li>
+              <li><a href="view_employees.jsp">View Employees</a></li>
+              <li><a href="manager_reimbursement.jsp">My Reimbursements</a></li>
           </ul>
           <ul class="navbar-nav nav navbar-right">
             <li> <a href="logout.do">Log Out <span class ="glyphicon glyphicon-log-out"></span></a></li>
@@ -52,6 +53,6 @@
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="./view_employee.js"></script>
+  <script src="./view_employees.js"></script>
 </body>
 </html>

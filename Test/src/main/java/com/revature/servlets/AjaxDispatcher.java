@@ -22,6 +22,8 @@ public class AjaxDispatcher {
 			return ReimbursementService.getReimbursements(employeeId);
 		case "/Test/getEmployees.ajax":
 			return EmployeeService.getAllEmployees();
+		case "/Test/getAllReimbursements.ajax":
+			return ReimbursementService.getAllReimbursements(employeeId);
 		default:
 			return new String("Not implemented");
 		}

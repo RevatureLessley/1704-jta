@@ -29,10 +29,13 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	}
 	
 	@Override
-	public List<Reimbursement> getAllReimbursements() {
+	public List<Reimbursement> getAllReimbursements(int employeeId) {
+		
 		List<Reimbursement> reimbursements = new ArrayList<>();
+		int index = 0;
 		try (Connection conn = ConnectionUtil.getConnection()){
-			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM reimbursement ORDER BY requestor_id");
+			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM reimbursement WHERE requestorId != ? ORDER BY requestorId");
+			stmt.setInt(++index, employeeId);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				Reimbursement reimbursement = new Reimbursement(rs.getInt("reimbursementId"), rs.getInt("requestorId"), rs.getInt("approverId"), rs.getString("category"), rs.getString("status"), rs.getString("submissionDate"), rs.getString("resolutionDate"), rs.getDouble("amount"));
@@ -50,8 +53,10 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	@Override
 	public List<Reimbursement> getReimbursements(int employeeId) {
 		List<Reimbursement> reimbursements = new ArrayList<>();
+		int index = 0;
 		try (Connection conn = ConnectionUtil.getConnection()) {
 			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM reimbursement WHERE requestorId = ?");
+			stmt.setInt(++index, employeeId);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				Reimbursement reimbursement = new Reimbursement(rs.getInt("reimbursementId"), rs.getInt("requestorId"), rs.getInt("approverId"), rs.getString("category"), rs.getString("status"), rs.getString("submissionDate"), rs.getString("resolutionDate"), rs.getDouble("amount"));

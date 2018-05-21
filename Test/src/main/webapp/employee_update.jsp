@@ -19,10 +19,11 @@ h2 {
 	<!--The navbar-->
 	<div class="container">
 		<nav class="navbar navbar-inverse">
-			<div class="navbar-header col-md-4">
+			<div class="navbar-header col-md-2">
 				<a href="./index.html" class="navbar-brand">ECorp</a>
 			</div>
-			<ul class="navbar-nav nav col-md-4">
+			<ul class="navbar-nav nav col-md-8">
+				<li><a href="employee_page.jsp">My Information</a></li>
 				<li class="active"><a href="employee_update.jsp">Update
 						Information</a></li>
 				<li><a href="employee_reimbursement.jsp">Employee

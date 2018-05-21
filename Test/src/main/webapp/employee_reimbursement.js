@@ -10,7 +10,8 @@ function fillReimbursementTable(){
       let reimbursementObject = JSON.parse(xhr.responseText);
 
       for (let reimbursement of reimbursementObject){
-        let id = reimbursement.id;
+    	console.log(reimbursement);
+        let id = reimbursement.reimbursementId;
         let category = reimbursement.category;
         let amount = reimbursement.amount;
         let status = reimbursement.status;
