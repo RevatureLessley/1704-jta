@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hibernate-mapping>
+	<class name="com.revature.hibernate.entity.Employee" table="EMPLOYEE">
+		<id name="employeeId" type="int">
+			<column name="employee_id"></column>
+			<generator class="sequence"></generator>
+		</id>
+		<property name="employeeName" type="string">
+			<column name="employee_name" length="60"></column>
+		</property>
+		<property name="employeeEmail" type="string">
+			<column name="employee_email" length="40"></column>
+		</property>
+	</class>
+</hibernate-mapping>
