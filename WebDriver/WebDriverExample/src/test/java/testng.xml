@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="MercuryTours" parallel="false">
+<parameter name="username" value="mercury"></parameter>
+<parameter name="password" value="mercury"></parameter>
+  <test name="Initial Test">
+<!--   <groups>
+  	<run>
+  		<include name="hello" />
+  	</run>
+  </groups> -->
+    <classes>
+      <class name="com.revature.tests.MercuryTours"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
