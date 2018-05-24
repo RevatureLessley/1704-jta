@@ -7,11 +7,26 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1> Hello </h1>
+	<h1> General Employee Home </h1>
 	<%@ page import="com.revature.model.Employee" %>
 	<% Employee employee = (Employee) request.getSession().getAttribute("authorizedUser"); %>
-	<h1> <%= employee %> </h1>
-	<h1> <%=employee.getFirstName() %></h1>
 	
+	
+	<div>
+		<ul>
+			<li> <a href= "viewReimbursement.jsp" > view Reimbursement </a> </li>
+			<li> <a href="genEmployeeInfo.jsp" > info</a> </li>
+			<li> <a href="updateInfo.jsp"> update Info </a>   </li>
+			 <li> <a href="submitReimb.jsp"> submit reimbursement </a> </li>
+		 	<li> <a href="get_reimbStatus.jsp "> view Reimbursement status </a> </li>
+		 	<li> <a href="logOut.jsp"> Click here to logout</a> </li>
+		
+		</ul>
+	</div>
+	
+	<div>
+			
+	
+	</div>
 </body>
 </html>

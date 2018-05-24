@@ -48,8 +48,6 @@ public class Employee implements Serializable {
 
 	//cnstr to log in
 	public Employee(String uName, String pwd) {
-		
-		System.out.println("inside employee 2 args cnstr" + uName + pwd);
 		this.username = uName;
 		this.password = pwd;
 	}
@@ -57,7 +55,6 @@ public class Employee implements Serializable {
 	/*for test only*/
 	public Employee(String uName) {
 		
-		System.out.println("inside 1 parameter cnstr");
 		this.username = uName;
 	}
 	
@@ -66,7 +63,6 @@ public class Employee implements Serializable {
 		
 		
 		super();
-		System.out.println("inside Model's Constructor");
 		this.eid = eid;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -74,9 +70,15 @@ public class Employee implements Serializable {
 		this.password = password;
 		this.type = type;
 	}
-
-
-
+	
+	
+	public Employee(int eid, String firstName, String lastName) {
+		super();
+		this.eid=eid;
+		this.firstName=firstName;
+		this.lastName=lastName;
+	}
+	
 	public String getUsername() {
 		return username;
 	}

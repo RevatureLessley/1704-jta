@@ -24,13 +24,13 @@ public class LoginService {
 		
 		if(temp.getPassword().equals(logindao.getPasswordHash(employee)) && temp.getType().equals("ge")) {
 				System.out.println("valid Regular Employee"); //logger
-				request.getSession().setAttribute("authorizedUser", employee);
+				request.getSession().setAttribute("authorizedUser", temp);
 				return "/generalEmployeeHome.jsp";
 		}
 		
 		 if(temp.getPassword().equals(logindao.getPasswordHash(employee)) && temp.getType().equals("fm")) {
 			System.out.println("valid Finance Manager"); //logger
-			request.getSession().setAttribute("authorizedUser", employee);
+			request.getSession().setAttribute("authorizedUser", temp);
 			return "/financeManagerHome.jsp";
 		}
 		

@@ -153,3 +153,5 @@ BEGIN
 END;
 /
 
+SELECT *
+FROM Employee

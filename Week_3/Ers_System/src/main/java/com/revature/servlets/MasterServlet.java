@@ -1,8 +1,8 @@
 package com.revature.servlets;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,6 +28,7 @@ public class MasterServlet extends HttpServlet {
 		System.out.println("Inside masterServlet doPost");
 		System.out.println("inside masterServlet URI= " + request.getRequestURI());
 		request.getRequestDispatcher(MasterDispatcher.process(request, response)).forward(request, response);
+		System.out.println("===========================================");
 		
 		/*System.out.println(request.getParameter("username"));
 		System.out.println(request.getParameter("password"));
