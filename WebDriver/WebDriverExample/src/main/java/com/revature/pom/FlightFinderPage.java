@@ -52,6 +52,22 @@ public class FlightFinderPage extends POM {
 		}
 		throw new IllegalArgumentException(input + " is not a valid input");
 	}
+	
+	public WebElement economyClassRadio() {
+		return driver.findElement(By.xpath("/html/body/div/table/tbody/tr/td[2]/table/tbody/tr[4]/td/table/tbody/tr/td[2]/table/tbody/tr[5]/td/form/table/tbody/tr[9]/td[2]/font/input"));
+	}
+	
+	public WebElement businessClassRadio() {
+		return driver.findElement(By.xpath("/html/body/div/table/tbody/tr/td[2]/table/tbody/tr[4]/td/table/tbody/tr/td[2]/table/tbody/tr[5]/td/form/table/tbody/tr[9]/td[2]/font/font/input[1]"));
+	}
+	
+	public WebElement firstClassRadio() {
+		return driver.findElement(By.xpath("/html/body/div/table/tbody/tr/td[2]/table/tbody/tr[4]/td/table/tbody/tr/td[2]/table/tbody/tr[5]/td/form/table/tbody/tr[9]/td[2]/font/font/input[2]"));
+	}
+	
+	public WebElement findFlightsButton() {
+		return driver.findElement(By.name("findFlights"));
+	}
 }
 
 
