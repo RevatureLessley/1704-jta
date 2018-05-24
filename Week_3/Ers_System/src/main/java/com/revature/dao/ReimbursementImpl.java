@@ -99,7 +99,7 @@ public List<Reimbursement> viewAllReimbursment() {
 		
 		
 		while(rs.next()) {
-			System.out.println("has next");
+			System.out.println("has next inside viewAllReimbursement / ReimbursementImpl");
 			r.add(new Reimbursement(rs.getInt("rid"),rs.getString("status"), rs.getDouble("reimbamount"), rs.getTimestamp("date_submitted")));
 		}
 		return r;

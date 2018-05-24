@@ -15,6 +15,7 @@ public class ReimbSvce {
 	}
 	
 	public static List<Reimbursement> getAllReimbursement(){
+		System.out.println("inside reimbsvce");
 		return dao.viewAllReimbursment();
 	}
 

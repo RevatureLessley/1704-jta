@@ -10,21 +10,22 @@
 
 	<h6> Employee Reimbursement</h6>
 
-<table class="table ">
+<table class="table">
             <thead>
                 <tr>
                     <th>RID</th>
                     <th>status</th>
                     <th>Reimbursement Amount</th>
-                    <th>Date Submitted</th>
+                 
                 </tr>
             </thead>
-            <tbody id="todos">
+            <tbody id="reimbursementTable">
 
             </tbody>
         </table>
         
          <script src="viewReimbursement.js" type="text/javascript"></script>
+         <script src=https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	
 
 </body>
