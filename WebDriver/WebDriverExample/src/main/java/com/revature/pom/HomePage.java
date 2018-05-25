@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class HomePage extends POM{
+public class HomePage extends POM {
 
 	private static final String URL = "http://newtours.demoaut.com";
 	
