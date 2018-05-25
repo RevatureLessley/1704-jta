@@ -37,7 +37,7 @@ describe("a five function calculator should do five things well", () => {
     describe("factorials have an incredible growth rate", () => {
         it("a factorial of 1 should be 1", () => {
             expect(calc.factorial(1)).toBe(1);
-        });
+        }); 
         it("a factorial of 0 should be 1", () => {
             expect(calc.factorial(0)).toBe(1);
         });
@@ -45,7 +45,7 @@ describe("a five function calculator should do five things well", () => {
             expect(calc.factorial(5)).toBe(120);
         });
         it("should fail when given a negative factorial", () => {
-            expect(calc.factorial(-15)).toThrowError("Error");
+            expect(calc.factorial(-15)).toThrow(new Error("cannot compute a negative factorial"));
         });
     });
 
