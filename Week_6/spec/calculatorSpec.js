@@ -45,8 +45,8 @@ describe("a five function calculator should do five things well", () => {
             expect(calc.factorial(5)).toBe(120);
         });
         it("should fail when given a negative factorial", () => {
-            expect(calc.factorial(-15)).toThrow(new Error("cannot compute a negative factorial"));
+            expect(() => {calc.factorial(-15)}).toThrow(new Error("Cannot compute a negative factorial"));
         });
     });
-
+  
 });
