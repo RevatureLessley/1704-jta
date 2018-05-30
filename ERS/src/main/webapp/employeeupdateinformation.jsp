@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="model.Employee" %>
-<%@ page import="model.Information" %>
-<%@ page import="model.Reimbursement" %>
+<%@ page import="com.revature.entity.Employee" %>
+<%@ page import="com.revature.entity.Information" %>
+<%@ page import="com.revature.entity.Reimbursement" %>
 <% Employee employee = (Employee) request.getSession().getAttribute("employee"); %>
 <% Information information = (Information) request.getSession().getAttribute("information"); %>
 

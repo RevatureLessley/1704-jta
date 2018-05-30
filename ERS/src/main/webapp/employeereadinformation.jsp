@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="model.Employee" %>
-<%@ page import="model.Information" %>
+<%@ page import="com.revature.entity.Employee" %>
+<%@ page import="com.revature.entity.Information" %>
 <% 	Employee employee = (Employee) request.getSession().getAttribute("employee");
 	Information information = (Information) request.getSession().getAttribute("information");%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
