@@ -10,7 +10,7 @@
 			</run>
 		</groups>
  -->		<classes>
-			<class name="com.revature.tests.MercuryTours" />
+			<class name="com.revature.tests.HelloWorldTest" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->
