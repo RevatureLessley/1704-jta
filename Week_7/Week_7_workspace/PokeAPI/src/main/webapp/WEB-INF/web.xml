@@ -8,12 +8,12 @@
         <init-param>
             <param-name>jersey.config.server.provider.packages</param-name>
             <!-- This init-param implies that all of our resource classes will be inside this package -->
-            <param-value>com.revature.PokeAPI</param-value>
+            <param-value>com.revature.resources</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>Jersey Web Application</servlet-name>
-        <url-pattern>/webapi/*</url-pattern>
+        <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
 </web-app>
