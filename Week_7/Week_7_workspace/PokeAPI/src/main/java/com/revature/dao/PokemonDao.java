@@ -9,4 +9,7 @@ public interface PokemonDao {
 	List<Pokemon> getAllPokemon();
 	Pokemon getPokemon(String name);
 	boolean insertPokemon(Pokemon pokemon);
+	
+	boolean updatePokemon(Pokemon pokemon);
+	boolean deletePokemon(String name);
 }

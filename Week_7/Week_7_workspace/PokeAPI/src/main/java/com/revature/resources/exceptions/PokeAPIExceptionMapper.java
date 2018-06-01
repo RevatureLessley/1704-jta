@@ -18,6 +18,13 @@ public class PokeAPIExceptionMapper implements ExceptionMapper<PokeAPIException>
 							.build();		
 		}
 		
+		if (exception instanceof YouHaveThisPokemonException) {
+			return Response.status(exception.getStatusCode())
+					.entity(new FaultMessage(exception.getStatusCode(), exception.getMessage()))
+					.type(MediaType.APPLICATION_JSON)
+					.build();		
+		}
+		
 		return Response.status(500)
 						.entity(new FaultMessage(500, "Unknown exception thrown"))
 						.type(MediaType.APPLICATION_JSON)

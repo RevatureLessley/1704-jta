@@ -8,6 +8,7 @@ import com.revature.dao.PokemonDao;
 import com.revature.dao.PokemonDaoImpl;
 import com.revature.model.Pokemon;
 import com.revature.resources.exceptions.PokemonNotFoundException;
+import com.revature.resources.exceptions.YouHaveThisPokemonException;
 
 public class PokemonService {
 
@@ -22,17 +23,27 @@ public class PokemonService {
 		try {
 			return dao.getPokemon(name);
 		} catch (NoResultException nre) {
-			throw new PokemonNotFoundException(404, name + " does not exist.");
+			throw new PokemonNotFoundException(404, "You have not caught the pokemon, " + name);
 		}
 	}
 	
 	public static boolean insertPokemon(Pokemon pokemon) {
-		return dao.insertPokemon(pokemon);
+		if (dao.insertPokemon(pokemon))
+			return true;
+		throw new YouHaveThisPokemonException(400, "You have already caught the pokemon, " + pokemon.getName());
+	}
+
+	public static boolean updatePokemon(Pokemon pokemon) {
+		if (dao.updatePokemon(pokemon)) {
+			return true;
+		}
+		throw new PokemonNotFoundException(400, "You have not caught the pokemon, " + pokemon.getName() + ", so you cannot update it.");
 	}
 	
-	public static void main(String[] args) {
-		for (Pokemon p : getAllPokemon()) {
-			System.out.println(p);
+	public static boolean deletePokemon(String name) {
+		if (dao.deletePokemon(name)) {
+			return true;
 		}
+		throw new PokemonNotFoundException(400, "You have not caught the pokemon, " + name + ", so you cannot remove it.");
 	}
 }
