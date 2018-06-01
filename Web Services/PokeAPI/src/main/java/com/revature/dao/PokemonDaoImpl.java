@@ -69,6 +69,52 @@ public class PokemonDaoImpl implements PokemonDao {
 		return false;
 	}
 
+	@Override
+	public boolean updatePokemon(Pokemon pokemon) {
+		Session session = null;
+		Transaction t = null;
+		try {
+			session = HibernateUtil.getSession();
+			t = session.beginTransaction();
+			Pokemon temp = session.createQuery("from Pokemon where pokedexId like :id", Pokemon.class)
+								  .setParameter("id", pokemon.getPokedexId())
+								  .getSingleResult();
+			temp.setName(pokemon.getName());
+			temp.setImageUrl();
+			session.update(temp);
+			t.commit();
+			return true;
+		} catch (HibernateException hbe) {
+			HibernateUtil.rollbackTransaction(t);
+			hbe.printStackTrace();
+		} finally {
+			HibernateUtil.shutdownSession(session);
+		}
+		return false;
+	}
+
+	@Override
+	public boolean deletePokemon(String name) {
+		Session session = null;
+		Transaction t = null;
+		try {
+			session = HibernateUtil.getSession();
+			t = session.beginTransaction();
+			Pokemon temp = session.createQuery("from Pokemon where name like :name", Pokemon.class)
+					    	      .setParameter("name", name)
+					    	      .getSingleResult();
+			session.delete(temp);
+			t.commit();
+			return true;
+		} catch (HibernateException hbe) {
+			HibernateUtil.rollbackTransaction(t);
+			hbe.printStackTrace();
+		} finally {
+			HibernateUtil.shutdownSession(session);
+		}
+		return false;
+	}
+
 }
 
 
