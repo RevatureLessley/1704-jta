@@ -20,18 +20,18 @@ public class Pokemon implements Serializable {
 	private static final long serialVersionUID = -5495795218263701248L;
 
 	@Id
-	@GeneratedValue(generator="pokemon_seq",strategy=GenerationType.SEQUENCE)
-	@SequenceGenerator(name="pokemon_seq", allocationSize=1, initialValue=1)
+	@GeneratedValue(generator = "pokemon_seq",strategy = GenerationType.SEQUENCE)
+	@SequenceGenerator(name = "pokemon_seq", allocationSize = 1, initialValue = 1)
 	@Column(name="POKEMON_ID")
 	private int id;
 	
-	@Column(name="POKEMON_NAME")
+	@Column(name = "POKEMON_NAME")
 	private String name;
 	
-	@Column(name="POKEDEX_ID")
+	@Column(name = "POKEDEX_ID", unique = true)
 	private int pokedexId;
 	
-	@Column(name="POKEMON_IMAGE_URL")
+	@Column(name = "POKEMON_IMAGE_URL")
 	private String imageUrl;
 	
 	private static String URL = "http://img.pokemondb.net/artwork/";
@@ -83,8 +83,10 @@ public class Pokemon implements Serializable {
 	}
 
 	public void setImageUrl() {
-		this.imageUrl = imageUrl + this.getName().toLowerCase() + ".jpg";
+		this.imageUrl = URL + this.getName().toLowerCase() + ".jpg";
 	}
+	
+	
 
 	@Override
 	public int hashCode() {

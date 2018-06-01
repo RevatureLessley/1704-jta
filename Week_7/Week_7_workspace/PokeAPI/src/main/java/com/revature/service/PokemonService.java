@@ -2,9 +2,12 @@ package com.revature.service;
 
 import java.util.List;
 
+import javax.persistence.NoResultException;
+
 import com.revature.dao.PokemonDao;
 import com.revature.dao.PokemonDaoImpl;
 import com.revature.model.Pokemon;
+import com.revature.resources.exceptions.PokemonNotFoundException;
 
 public class PokemonService {
 
@@ -16,7 +19,11 @@ public class PokemonService {
 	}
 	
 	public static Pokemon getPokemon(String name) {
-		return dao.getPokemon(name);
+		try {
+			return dao.getPokemon(name);
+		} catch (NoResultException nre) {
+			throw new PokemonNotFoundException(404, name + " does not exist.");
+		}
 	}
 	
 	public static boolean insertPokemon(Pokemon pokemon) {

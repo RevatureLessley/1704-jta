@@ -10,6 +10,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.revature.model.Pokemon;
+import com.revature.resources.exceptions.PokemonNotFoundException;
 import com.revature.service.PokemonService;
 
 @Path("/pokemon")
@@ -46,6 +47,6 @@ public class PokemonResource {
 		if (p != null) {
 			return Response.ok(p, MediaType.APPLICATION_JSON).build();
 		}
-		return Response.status(404).type(MediaType.APPLICATION_JSON).build();
+		throw new PokemonNotFoundException(404, name + " does not exist.");
 	}
 }
