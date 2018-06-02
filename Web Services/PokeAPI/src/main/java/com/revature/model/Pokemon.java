@@ -11,6 +11,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.revature.service.PokemonService;
+
 @XmlRootElement
 @Entity
 @Table(name="POKE_API")
@@ -27,7 +29,7 @@ public class Pokemon implements Serializable {
 	@Column(name="POKEMON_NAME")
 	private String name;
 	
-	@Column(name="POKEDEX_ID")
+	@Column(name="POKEDEX_ID", unique=true)
 	private int pokedexId;
 	
 	@Column(name="POKEMON_IMAGE_URL")
@@ -41,7 +43,6 @@ public class Pokemon implements Serializable {
 		super();
 		this.setName(name);
 		this.pokedexId = pokedexId;
-		this.setImageUrl();
 	}
 
 	public Pokemon(int id, String name, int pokedexId) {
@@ -49,15 +50,6 @@ public class Pokemon implements Serializable {
 		this.id = id;
 		this.setName(name);
 		this.pokedexId = pokedexId;
-		this.setImageUrl();
-	}
-	
-	public Pokemon(int id, String name, int pokedexId, String imageUrl) {
-		super();
-		this.id = id;
-		this.setName(name);
-		this.pokedexId = pokedexId;
-		this.setImageUrl();
 	}
 
 	public int getId() {
@@ -75,6 +67,7 @@ public class Pokemon implements Serializable {
 	public void setName(String name) {
 		String temp = name.toLowerCase();
 		this.name = temp.substring(0, 1).toUpperCase() + temp.substring(1);
+		this.setImageUrl();
 	}
 
 	public int getPokedexId() {
@@ -134,5 +127,4 @@ public class Pokemon implements Serializable {
 	public String toString() {
 		return "Pokemon [id=" + id + ", name=" + name + ", pokedexId=" + pokedexId + ", imageUrl=" + imageUrl + "]";
 	}
-	
 }
