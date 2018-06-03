@@ -2,7 +2,7 @@ package com.revature.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement
+@XmlRootElement(name="BoringPokemon")
 public class BoringPokemon {
 	
 	private int pokedexId;

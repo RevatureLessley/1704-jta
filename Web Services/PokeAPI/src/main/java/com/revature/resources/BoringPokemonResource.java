@@ -32,6 +32,7 @@ public class BoringPokemonResource {
 		}
 		return Response.ok()
 					   .entity(BoringPokemonService.getAllBoringPokemon())
+					   .type(MediaType.APPLICATION_JSON)
 					   .build();
 	}
 	
