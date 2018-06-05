@@ -80,7 +80,7 @@ public class PokemonResourceTest {
 			.assertThat()
 				.statusCode(404)
 				.and()
-					.body("message", containsString("You have not caught the pokemon, " + name));
+					.body("message", containsString("You have not caught the pokemon, " + name + "."));
 	}
 	
 			

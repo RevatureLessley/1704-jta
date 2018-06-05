@@ -1,39 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 import { Pokemon } from '../../../shared/pokemon';
-import { PokemonService } from '../../services/pokemon.service';
 import { FaultMessage } from '../../../shared/fault-message';
+import { PokemonService } from '../../services/pokemon.service';
 
 @Component({
-  selector: 'app-pokemon',
-  templateUrl: './pokemon.component.html',
-  styleUrls: ['./pokemon.component.css']
+  selector: 'app-pokemon-list',
+  templateUrl: './pokemon-list.component.html',
+  styleUrls: ['./pokemon-list.component.css']
 })
-export class PokemonComponent implements OnInit {
+export class PokemonListComponent implements OnInit {
 
-  pokemonName = '';
-  pokemon: Pokemon;
-  imageWidth = 200;
-  isLoaded: boolean;
-  isError: boolean;
+  pokemonList: Pokemon[];
+  isLoaded = false;
+  isError = false;
   faultMessage: FaultMessage;
+  imageWidth = 200;
 
   constructor(private pokemonService: PokemonService) { }
 
   ngOnInit() {
   }
 
-  getPokemon() {
+  getAllPokemon() {
     this.faultMessage = null;
     this.isLoaded = false;
-    this.pokemonService.getPokemon(this.pokemonName)
+    this.pokemonService.getAllPokemon()
                         .subscribe(
-                          data => this.pokemon = data,
+                          data => this.pokemonList = data,
                           err => this.faultMessage = err.error
                         );
     this.isLoaded = true;
     this.isError = this.faultMessage == null ? false : true;
-    this.pokemon = null;
-
+    this.pokemonList = null;
   }
 
 }

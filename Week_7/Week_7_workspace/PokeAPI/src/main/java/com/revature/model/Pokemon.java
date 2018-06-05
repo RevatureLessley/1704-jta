@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @Entity
-@Table(name="POKEMON")
+@Table(name="POKEAPI")
 public class Pokemon implements Serializable {
 
 	private static final long serialVersionUID = -5495795218263701248L;
@@ -42,7 +42,6 @@ public class Pokemon implements Serializable {
 		super();
 		this.setName(name);
 		this.pokedexId = pokedexId;
-		this.setImageUrl();
 	}
 
 	public Pokemon(int id, String name, int pokedexId) {
@@ -50,7 +49,6 @@ public class Pokemon implements Serializable {
 		this.id = id;
 		this.setName(name);
 		this.pokedexId = pokedexId;
-		this.setImageUrl();
 	}
 
 	public int getId() {
@@ -68,6 +66,8 @@ public class Pokemon implements Serializable {
 	public void setName(String name) {
 		String temp = name.toLowerCase();
 		this.name = temp.substring(0,1).toUpperCase() + temp.substring(1);
+		setImageUrl();
+
 	}
 
 	public int getPokedexId() {

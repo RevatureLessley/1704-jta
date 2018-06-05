@@ -25,7 +25,7 @@ public class CORSFilter implements Filter {
 		((HttpServletResponse) response ).setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
 		
 		// Allow the following HTTP methods from the other domain
-		((HttpServletResponse) response).setHeader("Access-Control-Allow-Origin", "GET, PUT, POST");
+		((HttpServletResponse) response).setHeader("Access-Control-Allow-Methods", "GET, PUT, POST");
 		
 		// Pass the request along the chain
 		chain.doFilter(request, response);
@@ -33,8 +33,10 @@ public class CORSFilter implements Filter {
 		
 	}
 	
+	@Override
 	public void init(FilterConfig filterConfig) throws ServletException{}
 	
+	@Override
 	public void destroy() {}
 	
 
