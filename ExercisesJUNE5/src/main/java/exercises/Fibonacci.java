@@ -3,12 +3,11 @@ package exercises;
 public class Fibonacci {
 
 	public static void main(String[] args) {
-		System.out.println(recursive(9));
-
+		System.out.println(recursive(0));
 	}
 	
 	public static int recursive(int n) {
-		return n = (n==1 || n ==2) ? 1 : recursive(n-1) + recursive(n-2);
+		return n = (n <= 2) ? (n==0)? 0 : 1 : recursive(n-1) + recursive(n-2);
 	}
 	
 	public static int iterative(int num) {
