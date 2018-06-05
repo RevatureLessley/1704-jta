@@ -81,22 +81,22 @@ public class QuestionTest {
 
 	@Test
 	public void recursiveFib1() {
-		assertEquals(0, iterativeFib(0));
+		assertEquals(0, recursiveFib(0));
 	}
 
 	@Test
 	public void recursiveFib2() {
-		assertEquals(1, iterativeFib(2));
+		assertEquals(1, recursiveFib(2));
 	}
 
 	@Test
 	public void recursiveFib3() {
-		assertEquals(1, iterativeFib(1));
+		assertEquals(1, recursiveFib(1));
 	}
 
 	@Test
 	public void recursiveFib4() {
-		assertEquals(8, iterativeFib(6));
+		assertEquals(8, recursiveFib(6));
 	}
 
 	@Test
