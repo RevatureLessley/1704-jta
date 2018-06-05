@@ -32,8 +32,9 @@ public class Methods {
 		return reverse;
 	}
 	
-	public int iterativeFib(int n) throws NonPositiveValueException{
+	public int iterativeFib(int n) throws Exception{
 			if (n<=0) throw new NonPositiveValueException("Positive values only");
+			if(n>=47) throw new ResultOutOfRangeException("Result is too large for int");
 			if (n==1||n==2) return 1;
 			int onePrior=1, twoPrior=1, current=0;
 			for(int i=3;i<=n;i++) {
@@ -44,14 +45,16 @@ public class Methods {
 			return current;
 	}
 	
-	public int recursiveFib(int n) throws NonPositiveValueException{
+	public int recursiveFib(int n) throws Exception{
 			if (n<=0) throw new NonPositiveValueException("Positive values only");
+			if (n>=47) throw new ResultOutOfRangeException("Result is too large for int");
 			if (n==1||n==2) return 1;
 			else return recursiveFib(n-1)+recursiveFib(n-2);
 	}
 	
-	public int factorial(int n) throws NonPositiveValueException{
+	public int factorial(int n) throws Exception{
 			if(n<=0) throw new NonPositiveValueException("Positive values only");
+			else if (n>=13) throw new ResultOutOfRangeException("Result is too large for int");
 			int result=1;
 			for(int i=1;i<=n;i++) {
 				result*=i;

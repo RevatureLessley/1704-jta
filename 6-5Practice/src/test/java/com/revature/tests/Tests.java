@@ -2,6 +2,7 @@ package com.revature.tests;
 
 import com.revature.Exec.Methods;
 import com.revature.Exec.NonPositiveValueException;
+import com.revature.Exec.ResultOutOfRangeException;
 
 import static org.junit.Assert.*;
 
@@ -42,31 +43,41 @@ public class Tests {
 	}
 	
 	@Test
-	public void iter() throws NonPositiveValueException {
+	public void iter() throws Exception {
 		assertEquals(m.iterativeFib(10), 55);
 	}
 	
+	@Test(expected=ResultOutOfRangeException.class)
+	public void iterLarge() throws Exception{
+		m.iterativeFib(47);
+	}
+	
 	@Test(expected=NonPositiveValueException.class)
-	public void iterZero() throws NonPositiveValueException {
+	public void iterZero() throws Exception {
 		m.iterativeFib(0);
 	}
 	
 	@Test
-	public void recurse() throws NonPositiveValueException{
+	public void recurse() throws Exception{
 		assertEquals(m.recursiveFib(10), 55);
 	}
 	
+	@Test(expected=ResultOutOfRangeException.class)
+	public void recurseLarge() throws Exception{
+		m.recursiveFib(47);
+	}
+	
 	@Test(expected=NonPositiveValueException.class)
-	public void recurseZero() throws NonPositiveValueException{
+	public void recurseZero() throws Exception{
 		m.recursiveFib(0);
 	}
 	@Test
-	public void fact() throws NonPositiveValueException{
+	public void fact() throws Exception{
 		assertEquals(m.factorial(10), 3628800);
 	}
 	
 	@Test(expected=NonPositiveValueException.class)
-	public void factZero() throws NonPositiveValueException{
+	public void factZero() throws Exception{
 		m.factorial(0);
 	}
 	
