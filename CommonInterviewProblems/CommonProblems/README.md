@@ -15,6 +15,16 @@ ApplicationHelper class where there is a description of how to change the inputs
 Currently this is a minimum viable product. I have written the solutions to 
 some common questions and they have been tested
 
+### Current solutions
+
+* Factorial (recursively and iteratively)
+* Fibonacci (recursively and iteratively)
+* FizzBuzz
+* Palindrome (checks if a string is a palindrome)
+* Reverse a string only using String.charAt()
+* A method that swaps two characters in a string and adds a space
+	* Ex: input: "String" => output: "tS ir gn"
+
 ## Future of the Project
 
 * I would like to add an Angular application so that inputs to the solutions could 
