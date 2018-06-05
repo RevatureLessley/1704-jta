@@ -1,6 +1,8 @@
 package com.revature.tests;
 
 import com.revature.Exec.Methods;
+import com.revature.Exec.NonPositiveValueException;
+
 import static org.junit.Assert.*;
 
 import org.junit.After;
@@ -40,24 +42,39 @@ public class Tests {
 	}
 	
 	@Test
-	public void iter() {
+	public void iter() throws NonPositiveValueException {
 		assertEquals(m.iterativeFib(10), 55);
 	}
 	
+	@Test(expected=NonPositiveValueException.class)
+	public void iterZero() throws NonPositiveValueException {
+		m.iterativeFib(0);
+	}
+	
 	@Test
-	public void recurse() {
+	public void recurse() throws NonPositiveValueException{
 		assertEquals(m.recursiveFib(10), 55);
 	}
 	
-	@Test public void fact() {
+	@Test(expected=NonPositiveValueException.class)
+	public void recurseZero() throws NonPositiveValueException{
+		m.recursiveFib(0);
+	}
+	@Test
+	public void fact() throws NonPositiveValueException{
 		assertEquals(m.factorial(10), 3628800);
 	}
 	
-	@Test public void modifyEven() {
+	@Test(expected=NonPositiveValueException.class)
+	public void factZero() throws NonPositiveValueException{
+		m.factorial(0);
+	}
+	
+	@Test public void modifyEven() throws NonPositiveValueException{
 		assertEquals(m.modifyString("Hello, World"), "eH ll ,o W  ro dl");
 	}
 	
-	@Test public void modifyOdd() {
+	@Test public void modifyOdd() throws NonPositiveValueException{
 		assertEquals(m.modifyString("William"), "iW ll ai m");
 	}
 
