@@ -32,28 +32,31 @@ public class Methods {
 		return reverse;
 	}
 	
-	public int iterativeFib(int n) {
-		if (n==1||n==2) return 1;
-		int onePrior=1, twoPrior=1, current=0;
-		for(int i=3;i<=n;i++) {
-			current=onePrior+twoPrior;
-			twoPrior=onePrior;
-			onePrior=current;			
-		}
-		return current;
+	public int iterativeFib(int n) throws NonPositiveValueException{
+			if (n<=0) throw new NonPositiveValueException("Positive values only");
+			if (n==1||n==2) return 1;
+			int onePrior=1, twoPrior=1, current=0;
+			for(int i=3;i<=n;i++) {
+				current=onePrior+twoPrior;
+				twoPrior=onePrior;
+				onePrior=current;			
+			}
+			return current;
 	}
 	
-	public int recursiveFib(int n) {
-		if (n==1||n==2) return 1;
-		else return recursiveFib(n-1)+recursiveFib(n-2);
+	public int recursiveFib(int n) throws NonPositiveValueException{
+			if (n<=0) throw new NonPositiveValueException("Positive values only");
+			if (n==1||n==2) return 1;
+			else return recursiveFib(n-1)+recursiveFib(n-2);
 	}
 	
-	public int factorial(int n) {
-		int result=1;
-		for(int i=1;i<=n;i++) {
-			result*=i;
-		}
-		return result;
+	public int factorial(int n) throws NonPositiveValueException{
+			if(n<=0) throw new NonPositiveValueException("Positive values only");
+			int result=1;
+			for(int i=1;i<=n;i++) {
+				result*=i;
+			}
+			return result;
 	}
 	
 	public String modifyString(String in) {
