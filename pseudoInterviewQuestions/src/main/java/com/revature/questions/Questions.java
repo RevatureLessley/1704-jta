@@ -1,5 +1,8 @@
 package com.revature.questions;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 public class Questions {
 
 	public static boolean isPalindrome(String s) {
@@ -60,8 +63,34 @@ public class Questions {
 		}
 	}
 
-	public static void main(String[] args) {
+	public static void fizzBuzzOneLinerMaker() {
+		boolean flag = false;
+		for (int i = 1; i <= 100; i++) {
+
+			if (i % 3 == 0) {
+				if (i % 5 == 0) {
+					System.out.print("System.out.printf(\"fizzbuzz\\n\") == null |");
+					continue;
+				}
+				System.out.print("System.out.printf(\"fizz\\n\") == null |");
+				continue;
+			}
+			if (i % 5 == 0) {
+				System.out.print("System.out.printf(\"buzz\\n\") == null |");
+				continue;
+			}
+			System.out.print("System.out.printf(\"" + i + "\\n\") == null |");
+		}
+	}
+
+	public static void fizzBuzzOneLiner() {
+		boolean b = System.out.printf("1\n") == null |System.out.printf("2\n") == null |System.out.printf("fizz\n") == null |System.out.printf("4\n") == null |System.out.printf("buzz\n") == null |System.out.printf("fizz\n") == null |System.out.printf("7\n") == null |System.out.printf("8\n") == null |System.out.printf("fizz\n") == null |System.out.printf("buzz\n") == null |System.out.printf("11\n") == null |System.out.printf("fizz\n") == null |System.out.printf("13\n") == null |System.out.printf("14\n") == null |System.out.printf("fizzbuzz\n") == null |System.out.printf("16\n") == null |System.out.printf("17\n") == null |System.out.printf("fizz\n") == null |System.out.printf("19\n") == null |System.out.printf("buzz\n") == null |System.out.printf("fizz\n") == null |System.out.printf("22\n") == null |System.out.printf("23\n") == null |System.out.printf("fizz\n") == null |System.out.printf("buzz\n") == null |System.out.printf("26\n") == null |System.out.printf("fizz\n") == null |System.out.printf("28\n") == null |System.out.printf("29\n") == null |System.out.printf("fizzbuzz\n") == null |System.out.printf("31\n") == null |System.out.printf("32\n") == null |System.out.printf("fizz\n") == null |System.out.printf("34\n") == null |System.out.printf("buzz\n") == null |System.out.printf("fizz\n") == null |System.out.printf("37\n") == null |System.out.printf("38\n") == null |System.out.printf("fizz\n") == null |System.out.printf("buzz\n") == null |System.out.printf("41\n") == null |System.out.printf("fizz\n") == null |System.out.printf("43\n") == null |System.out.printf("44\n") == null |System.out.printf("fizzbuzz\n") == null |System.out.printf("46\n") == null |System.out.printf("47\n") == null |System.out.printf("fizz\n") == null |System.out.printf("49\n") == null |System.out.printf("buzz\n") == null |System.out.printf("fizz\n") == null |System.out.printf("52\n") == null |System.out.printf("53\n") == null |System.out.printf("fizz\n") == null |System.out.printf("buzz\n") == null |System.out.printf("56\n") == null |System.out.printf("fizz\n") == null |System.out.printf("58\n") == null |System.out.printf("59\n") == null |System.out.printf("fizzbuzz\n") == null |System.out.printf("61\n") == null |System.out.printf("62\n") == null |System.out.printf("fizz\n") == null |System.out.printf("64\n") == null |System.out.printf("buzz\n") == null |System.out.printf("fizz\n") == null |System.out.printf("67\n") == null |System.out.printf("68\n") == null |System.out.printf("fizz\n") == null |System.out.printf("buzz\n") == null |System.out.printf("71\n") == null |System.out.printf("fizz\n") == null |System.out.printf("73\n") == null |System.out.printf("74\n") == null |System.out.printf("fizzbuzz\n") == null |System.out.printf("76\n") == null |System.out.printf("77\n") == null |System.out.printf("fizz\n") == null |System.out.printf("79\n") == null |System.out.printf("buzz\n") == null |System.out.printf("fizz\n") == null |System.out.printf("82\n") == null |System.out.printf("83\n") == null |System.out.printf("fizz\n") == null |System.out.printf("buzz\n") == null |System.out.printf("86\n") == null |System.out.printf("fizz\n") == null |System.out.printf("88\n") == null |System.out.printf("89\n") == null |System.out.printf("fizzbuzz\n") == null |System.out.printf("91\n") == null |System.out.printf("92\n") == null |System.out.printf("fizz\n") == null |System.out.printf("94\n") == null |System.out.printf("buzz\n") == null |System.out.printf("fizz\n") == null |System.out.printf("97\n") == null |System.out.printf("98\n") == null |System.out.printf("fizz\n") == null |System.out.printf("buzz\n") == null;
+	}
+
+	public static void main(String[] args) throws IOException {
 		fizzBuzz();
+		System.out.println("I also made a terrible one liner for fizz buzz just because.");
+		fizzBuzzOneLiner();
 	}
 
 	// Note, will only work for factorials in which the answers are less than the max value of an integer.
