@@ -1,6 +1,6 @@
 # Solutions To Common Interview Questions
 
-This is a Maven Project where I can solve common interview questions,
+This is a Project where I solve common interview questions,
 as well as practice what I have learned through out my time at Revature.
 
 ## Running this application
