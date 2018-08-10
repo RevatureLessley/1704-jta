@@ -73,3 +73,9 @@ yarn-error.log
 # System Files
 .DS_Store
 Thumbs.db
+
+#empty folder
+*/Project0/src/test/resources
+*/Project1/src/test/resources
+*/Project2/src/test/resources
+*/Project3/src/test/resources
